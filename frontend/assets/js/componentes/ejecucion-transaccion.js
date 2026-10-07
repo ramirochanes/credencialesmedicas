@@ -20,7 +20,7 @@ export async function ejecutarTransaccionConInterfaz({ boton, contenedorAvisos, 
       },
     });
     contenedorAvisos.replaceChildren();
-    mostrarNotificacion(mensajeExito, "exito", { enlace: urlExploradorTransaccion(recibo.hash), textoEnlace: "Ver transacción" });
+    mostrarNotificacion(mensajeExito, "exito", { enlace: urlExploradorTransaccion(recibo.hash), textoEnlace: "Ver la constancia pública" });
     return recibo;
   } catch (error) {
     mostrarAvisoEnPagina(contenedorAvisos, "error", "No se pudo guardar el cambio", error.message);

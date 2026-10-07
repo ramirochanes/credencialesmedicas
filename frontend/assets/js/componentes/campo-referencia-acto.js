@@ -27,9 +27,9 @@ export function crearCampoReferenciaActo(etiqueta = "Acto que respalda el cambio
     crearElementoSeguro("span", {
       id: `${id}-ayuda`,
       clase: "ayuda-campo",
-      texto: "Escribí la referencia o adjuntá el PDF del acto. En la blockchain solo queda su huella.",
+      texto: "Escribí el número de la resolución o adjuntá su PDF. En la blockchain solo queda una huella.",
     }),
-    crearElementoSeguro("label", { for: `${id}-archivo`, clase: "ayuda-campo", texto: "PDF del acto (opcional, reemplaza al texto):" }),
+    crearElementoSeguro("label", { for: `${id}-archivo`, clase: "ayuda-campo", texto: "PDF de la resolución (opcional, reemplaza al texto):" }),
     archivo,
     error,
   ]);

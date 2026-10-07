@@ -8,7 +8,7 @@
 | DT-2 | Gobernanza y guardián en una **EOA** (la cuenta de deploy) | Punto único de falla | Pasar `DEFAULT_ADMIN_ROLE` a un **Safe multisig** (por ejemplo 3 de 5 colegios) y renunciar al rol en la EOA. |
 | DT-3 | Índice `credencialesPorTitular` de **solo agregado** | Si cambia la wallet, la lista vieja conserva el id (el front lo filtra) | Usar `EnumerableSet` por titular y quitar al reasignar. |
 | DT-4 | Listado del emisor por **escaneo de eventos** en tramos | Lento si pasaron muchos bloques desde el deploy | Indexador (The Graph / Ponder) o un endpoint propio que cachee eventos. |
-| DT-5 | **Sin versionado de assets** del frontend | Caché del navegador con módulos viejos después de actualizar | Paso de build mínimo que agregue hash al nombre de los archivos, o `?v=` en los imports. |
+| DT-5 | **Sin versionado de assets** del frontend | Caché del navegador con módulos viejos después de actualizar | Paso de build mínimo que agregue hash al nombre de los archivos, o `?v=` en los imports. **Hecho (07/10/2026):** `.htaccess` envía `Cache-Control: no-cache` para HTML, CSS y JS. |
 | DT-6 | CSP con RPCs **duplicados** en `.htaccess` y `config.js` | Si se cambia uno y no el otro, se bloquean las lecturas | Generar `.htaccess` desde `config.js` con un script. |
 | DT-7 | Colector PHP **sin rate limit** | Se puede llenar el disco con envíos masivos | Límite por seudónimo/minuto y rotación por tamaño. |
 | DT-8 | Gas pagado por cada institución | Fricción para instituciones sin cripto | Account Abstraction (ERC-4337) con Paymaster: el operador del servicio patrocina el gas (clase 30/38). |
@@ -19,7 +19,7 @@
 | DT-14 | Ingreso con mail (Privy) con wallet **EOA embebida**, sin paymaster | Cada cuenta nueva necesita POL para operar; la gobernanza tiene que cargarlo | Smart account ERC-4337 con paymaster (Pimlico) que patrocine el gas de las cuentas habilitadas en el padrón, como en la clase 38. |
 | DT-15 | Dependencia de un tercero (Privy) para el ingreso con mail | Si el servicio cae, las cuentas por mail no pueden operar (consultar sigue funcionando); Privy ve los mails | MetaMask queda como alternativa en la misma pantalla. Evaluar login con identidad estatal (Ciudadano Digital / Mi Argentina) + MPC, como el caso EPEC (clases 30 y 33). |
 | DT-13 | Cuenta de deploy con **POL real** en red principal | Exposición si se filtra la clave | Dejar el saldo mínimo, pasar la gobernanza a un Safe (DT-2) y mover el remanente a otra cuenta. |
-| DT-16 | Las **constancias de verificación** de hospitales y clínicas se ven en la consulta pública | Deja ver dónde trabaja o se postula un médico (devolución de María Eugenia) | MVP: mostrarlas solo al médico y a las instituciones del padrón (el dato sigue legible en la cadena). Privacidad completa: guardar solo una huella de la constancia y que el hospital la presente cuando haga falta (requiere contrato nuevo, porque no es actualizable). |
+| DT-16 | Las **constancias de verificación** de hospitales y clínicas se ven en la consulta pública | Deja ver dónde trabaja o se postula un médico (devolución de María Eugenia) | **Hecho para el MVP (07/10/2026):** ya no se muestran en la consulta pública; las ve el médico en «Mis matrículas» y cada hospital en su panel. El dato sigue legible en la cadena para quien la consulte técnicamente. Privacidad completa: guardar solo una huella de la constancia y que el hospital la presente cuando haga falta (requiere contrato nuevo, porque no es actualizable). |
 
 ## Mejoras propuestas (roadmap)
 

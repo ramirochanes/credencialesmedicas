@@ -179,7 +179,7 @@ export async function ejecutarTransaccionRegistro(firmante, metodo, argumentos, 
     diagnostico.info("transaccion", `Enviada ${metodo}`, { hash: transaccion.hash });
     alEnviar?.(transaccion.hash);
     const recibo = await transaccion.wait();
-    if (recibo?.status !== 1) throw new Error("La red revirtió la transacción.");
+    if (recibo?.status !== 1) throw new Error("La blockchain rechazó la operación.");
     diagnostico.info("transaccion", `Confirmada ${metodo}`, {
       hash: recibo.hash,
       bloque: recibo.blockNumber,

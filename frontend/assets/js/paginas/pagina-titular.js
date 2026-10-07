@@ -4,12 +4,12 @@ import { montarEstructuraSitio } from "../componentes/cabecera-sitio.js";
 import { montarPanelBilletera } from "../componentes/conexion-billetera.js";
 import { crearCredencialDigital } from "../componentes/codigo-qr-credencial.js";
 import { crearFormularioFirmaTitularidad } from "../componentes/firma-titularidad.js";
-import { crearListaAntecedentes } from "../componentes/linea-tiempo-historial.js";
+import { crearListaAntecedentes, crearListaVerificaciones } from "../componentes/linea-tiempo-historial.js";
 import { montarSelectorDocumento } from "../componentes/selector-documento.js";
 import { ejecutarTransaccionConInterfaz } from "../componentes/ejecucion-transaccion.js";
 import { confirmarAccion, mostrarAvisoEnPagina } from "../componentes/avisos-interfaz.js";
 import { crearElementoSeguro, buscarElemento } from "../nucleo/dom-seguro.js";
-import { leerCredencialesDeCuentaTitular, leerInstitucion, leerAntecedentesCredencial } from "../nucleo/contrato-credenciales.js";
+import { leerCredencialesDeCuentaTitular, leerInstitucion, leerAntecedentesCredencial, leerVerificacionesCredencial, listarInstituciones } from "../nucleo/contrato-credenciales.js";
 import { ESTADO } from "../nucleo/formato-credencial.js";
 
 const LARGO_MAXIMO_DESCRIPCION = 140;
@@ -58,7 +58,13 @@ function crearFormularioAntecedente(sesion, ficha, alTerminar) {
 }
 
 async function crearTarjetaCredencial(sesion, ficha, alTerminar) {
-  const [institucion, antecedentes] = await Promise.all([leerInstitucion(ficha.datos.institucionEmisora), leerAntecedentesCredencial(ficha.id)]);
+  const [institucion, antecedentes, verificaciones, instituciones] = await Promise.all([
+    leerInstitucion(ficha.datos.institucionEmisora),
+    leerAntecedentesCredencial(ficha.id),
+    leerVerificacionesCredencial(ficha.id),
+    listarInstituciones(),
+  ]);
+  const institucionesPorId = new Map(instituciones.map((item) => [item.id, item]));
   const avisos = crearElementoSeguro("div");
   const retirar = async (antecedente) => {
     const confirmado = await confirmarAccion({ titulo: "¿Retirar el antecedente?", texto: antecedente.descripcion, textoConfirmar: "Retirar", peligrosa: true });
@@ -73,7 +79,10 @@ async function crearTarjetaCredencial(sesion, ficha, alTerminar) {
   return crearElementoSeguro("section", { clase: "tarjeta" }, [
     crearCredencialDigital(ficha, institucion),
     crearElementoSeguro("div", { clase: "separacion-superior" }, [crearFormularioFirmaTitularidad(sesion, ficha)]),
-    crearElementoSeguro("h3", { clase: "separacion-superior", texto: "Antecedentes autodeclarados" }),
+    crearElementoSeguro("h3", { clase: "separacion-superior", texto: "Hospitales y clínicas que verificaron tu matrícula" }),
+    crearElementoSeguro("p", { clase: "texto-chico texto-secundario", texto: "No aparece en la consulta pública del sitio: la ves vos acá y cada hospital en su panel." }),
+    crearListaVerificaciones(verificaciones, institucionesPorId),
+    crearElementoSeguro("h3", { clase: "separacion-superior", texto: "Cursos y formación que agregaste" }),
     avisos,
     crearListaAntecedentes(antecedentes, { alRetirar: retirar }),
     ficha.estadoVigente === ESTADO.Activa ? crearFormularioAntecedente(sesion, ficha, alTerminar) : null,

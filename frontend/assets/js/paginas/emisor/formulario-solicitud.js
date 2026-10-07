@@ -17,31 +17,31 @@ export function crearFormularioSolicitud(sesion, alCrear) {
     tipos.map((tipo) => crearElementoSeguro("option", { value: String(tipo), texto: nombreTipoCredencial(tipo) })),
   );
   const referencia = crearElementoSeguro("input", { type: "text", id: "solicitud-referencia", maxlength: "120", "aria-describedby": "solicitud-referencia-ayuda" });
-  const wallet = crearElementoSeguro("input", { type: "text", id: "solicitud-wallet", spellcheck: "false", placeholder: "0x… (opcional)", "aria-describedby": "solicitud-wallet-ayuda solicitud-wallet-error" });
+  const wallet = crearElementoSeguro("input", { type: "text", id: "solicitud-wallet", spellcheck: "false", placeholder: "Número de cuenta 0x… (opcional)", "aria-describedby": "solicitud-wallet-ayuda solicitud-wallet-error" });
   const errorWallet = crearElementoSeguro("span", { id: "solicitud-wallet-error", clase: "error-campo", role: "alert", hidden: true });
   const avisos = crearElementoSeguro("div");
   const resultado = crearElementoSeguro("div", { "aria-live": "polite" });
-  const boton = crearElementoSeguro("button", { type: "submit", clase: "boton boton--primario", texto: "Registrar solicitud" });
+  const boton = crearElementoSeguro("button", { type: "submit", clase: "boton boton--primario", texto: "Cargar pedido" });
 
   const formulario = crearElementoSeguro("form", { novalidate: true }, [
     crearElementoSeguro("p", {
       clase: "texto-secundario",
-      texto: "Paso 1 del ciclo de vida. Se genera un identificador aleatorio que no contiene datos del profesional.",
+      texto: "Primer paso: cargar el pedido del médico. El sistema le asigna un código aleatorio que no contiene sus datos.",
     }),
-    crearElementoSeguro("div", { clase: "campo" }, [crearElementoSeguro("label", { for: "solicitud-tipo", texto: "Tipo de credencial" }), selectorTipo]),
+    crearElementoSeguro("div", { clase: "campo" }, [crearElementoSeguro("label", { for: "solicitud-tipo", texto: "Qué se otorga" }), selectorTipo]),
     crearElementoSeguro("div", { clase: "campo" }, [
-      crearElementoSeguro("label", { for: "solicitud-referencia", texto: "Referencia interna (opcional)" }),
+      crearElementoSeguro("label", { for: "solicitud-referencia", texto: "Número de expediente (opcional)" }),
       referencia,
       crearElementoSeguro("span", {
         id: "solicitud-referencia-ayuda",
         clase: "ayuda-campo",
-        texto: "Número de expediente o legajo de tu sistema. Se guarda solo su huella. No uses DNI ni nombre.",
+        texto: "El de tu sistema interno. Solo se guarda una huella que no permite leerlo. No pongas DNI ni nombre.",
       }),
     ]),
     crearElementoSeguro("div", { clase: "campo" }, [
-      crearElementoSeguro("label", { for: "solicitud-wallet", texto: "Wallet del profesional (opcional)" }),
+      crearElementoSeguro("label", { for: "solicitud-wallet", texto: "Cuenta del médico (opcional)" }),
       wallet,
-      crearElementoSeguro("span", { id: "solicitud-wallet-ayuda", clase: "ayuda-campo", texto: "Le permite ver sus credenciales y declarar antecedentes. Se puede asignar después." }),
+      crearElementoSeguro("span", { id: "solicitud-wallet-ayuda", clase: "ayuda-campo", texto: "Le permite ver sus matrículas y demostrar que son suyas. Se puede agregar después." }),
       errorWallet,
     ]),
     avisos,
@@ -69,16 +69,16 @@ export function crearFormularioSolicitud(sesion, alCrear) {
       firmante: sesion.firmante,
       metodo: "registrarSolicitudCredencial",
       argumentos: [idCredencial, Number(selectorTipo.value), huellaReferencia, textoWallet ? getAddress(textoWallet) : ZeroAddress],
-      mensajeExito: "Solicitud registrada.",
+      mensajeExito: "Pedido cargado.",
     });
     if (!recibo) return;
     formulario.reset();
     resultado.replaceChildren(
       crearElementoSeguro("div", { clase: "aviso aviso--exito", role: "status" }, [
         crearElementoSeguro("div", {}, [
-          crearElementoSeguro("strong", { texto: "Solicitud registrada (Pendiente)." }),
-          crearElementoSeguro("p", {}, ["Identificador: ", crearValorCopiable(idCredencial, "Copiar identificador")]),
-          crearElementoSeguro("button", { type: "button", clase: "boton boton--secundario", texto: "Continuar con la validación", onclick: () => alCrear(idCredencial) }),
+          crearElementoSeguro("strong", { texto: "Pedido cargado (Pendiente)." }),
+          crearElementoSeguro("p", {}, ["Código: ", crearValorCopiable(idCredencial, "Copiar código")]),
+          crearElementoSeguro("button", { type: "button", clase: "boton boton--secundario", texto: "Seguir: revisar los papeles", onclick: () => alCrear(idCredencial) }),
         ]),
       ]),
     );

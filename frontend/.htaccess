@@ -12,3 +12,12 @@
   AddType text/javascript .js
   AddType font/woff2 .woff2
 </IfModule>
+
+# Que los navegadores vuelvan a preguntar por HTML, CSS y JS en cada visita (si no cambió,
+# el servidor responde 304 y no se descarga de nuevo). Evita ver versiones viejas después
+# de actualizar el sitio (el hosting cachea 7 días por defecto). Resuelve DT-5.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

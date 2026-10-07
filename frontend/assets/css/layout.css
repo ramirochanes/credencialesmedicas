@@ -32,6 +32,7 @@
   text-transform: uppercase;
   color: #8fd3db;
   font-weight: 700;
+  white-space: nowrap;
 }
 .marca-sitio__nombre {
   font-family: var(--fuente-titulos);
@@ -54,6 +55,7 @@
   align-items: center;
   min-height: 44px;
   padding: 0 var(--espacio-3);
+  white-space: nowrap;
   border-radius: var(--radio-chico);
   color: #dbe6f3;
   text-decoration: none;
@@ -148,7 +150,8 @@ main {
   }
 }
 
-@media (max-width: 760px) {
+/* El menú completo entra en una línea desde ~1180 px; debajo, menú de hamburguesa. */
+@media (max-width: 1180px) {
   .cabecera-sitio__interior {
     padding: var(--espacio-2) var(--espacio-4);
     flex-wrap: wrap;
@@ -172,6 +175,9 @@ main {
   .indicador-red {
     display: none;
   }
+}
+
+@media (max-width: 760px) {
   main {
     padding: var(--espacio-5) var(--espacio-4) var(--espacio-6);
   }

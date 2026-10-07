@@ -7,6 +7,20 @@
   padding: var(--espacio-7) var(--espacio-6);
   margin-bottom: var(--espacio-6);
 }
+/* Video de presentación debajo de la portada */
+.seccion-video h2 {
+  margin-top: 0;
+}
+.video-presentacion {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border-radius: var(--radio);
+  background: #0b1a2e;
+}
+
 .portada .rotulo-seccion {
   color: #8fd3db;
 }

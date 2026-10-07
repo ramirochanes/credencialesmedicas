@@ -1,8 +1,9 @@
 // Resultado de verificación (destino del QR): estado vigente, emisor, contraste del
-// PDF, historial, verificaciones institucionales y antecedentes autodeclarados.
+// PDF, historial y antecedentes autodeclarados. Las constancias de hospitales no se
+// muestran acá (privacidad, DT-16): las ven el médico y cada hospital en su panel.
 import { montarEstructuraSitio } from "../componentes/cabecera-sitio.js";
 import { crearResultadoEstado, crearFichaDatosCredencial } from "../componentes/tarjeta-estado-credencial.js";
-import { crearLineaTiempoHistorial, crearListaVerificaciones, crearListaAntecedentes } from "../componentes/linea-tiempo-historial.js";
+import { crearLineaTiempoHistorial, crearListaAntecedentes } from "../componentes/linea-tiempo-historial.js";
 import { crearCredencialDigital } from "../componentes/codigo-qr-credencial.js";
 import { montarSelectorDocumento } from "../componentes/selector-documento.js";
 import { mostrarAvisoEnPagina } from "../componentes/avisos-interfaz.js";
@@ -14,7 +15,6 @@ import {
   leerInstitucion,
   listarInstituciones,
   leerHistorialCredencial,
-  leerVerificacionesCredencial,
   leerAntecedentesCredencial,
   contrastarDocumentoConCredencial,
 } from "../nucleo/contrato-credenciales.js";
@@ -46,14 +46,12 @@ async function mostrarContraste(idCredencial, huella) {
 async function cargarDetalle(ficha, institucion) {
   const instituciones = await listarInstituciones();
   const institucionesPorId = new Map(instituciones.map((item) => [item.id, item]));
-  const [historial, verificaciones, antecedentes] = await Promise.all([
+  const [historial, antecedentes] = await Promise.all([
     leerHistorialCredencial(ficha.id),
-    leerVerificacionesCredencial(ficha.id),
     leerAntecedentesCredencial(ficha.id),
   ]);
   vaciarContenedor(buscarElemento("#ficha-credencial"), crearFichaDatosCredencial(ficha));
   vaciarContenedor(buscarElemento("#historial-credencial"), crearLineaTiempoHistorial(historial, institucionesPorId));
-  vaciarContenedor(buscarElemento("#verificaciones-credencial"), crearListaVerificaciones(verificaciones, institucionesPorId));
   vaciarContenedor(buscarElemento("#antecedentes-credencial"), crearListaAntecedentes(antecedentes));
   vaciarContenedor(buscarElemento("#credencial-digital"), crearCredencialDigital(ficha, institucion));
 }

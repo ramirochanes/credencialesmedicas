@@ -40,10 +40,10 @@ function mostrarPanelEmisor(sesion) {
   const contenedorPestanas = crearElementoSeguro("div", { clase: "tarjeta" });
   area.replaceChildren(contenedorPestanas);
   pestanas = montarPestanas(contenedorPestanas, [
-    { clave: "solicitud", titulo: "Nueva solicitud", contenido: crearFormularioSolicitud(sesion, abrirEnGestion) },
-    { clave: "gestion", titulo: "Gestionar credencial", contenido: gestion.elemento },
-    { clave: "listado", titulo: "Credenciales de mi institución", contenido: listado.elemento },
-    { clave: "lote", titulo: "Carga inicial", contenido: crearCargaInicialLote(sesion) },
+    { clave: "solicitud", titulo: "Cargar pedido", contenido: crearFormularioSolicitud(sesion, abrirEnGestion) },
+    { clave: "gestion", titulo: "Gestionar una matrícula", contenido: gestion.elemento },
+    { clave: "listado", titulo: "Matrículas de mi institución", contenido: listado.elemento },
+    { clave: "lote", titulo: "Matrículas anteriores", contenido: crearCargaInicialLote(sesion) },
   ], "emisor");
 
   const idEnUrl = new URLSearchParams(window.location.search).get("c");
