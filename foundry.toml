@@ -1,0 +1,27 @@
+# Configuración de Foundry — DIG Credenciales Médicas (Diplomatura Blockchain UTN 2026)
+[profile.default]
+src = "src"
+test = "test"
+script = "script"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.30"
+evm_version = "cancun"          # Polygon PoS (principal y Amoy) soporta los opcodes de Cancun
+optimizer = true
+optimizer_runs = 200
+# Los scripts leen la semilla del padrón (config/) y registran cada despliegue (despliegues/)
+fs_permissions = [
+  { access = "read", path = "./config" },
+  { access = "read", path = "./demo" },
+  { access = "read-write", path = "./despliegues" },
+]
+
+[fuzz]
+runs = 512
+
+[rpc_endpoints]
+polygon = "${RPC_URL_POLYGON}"   # red principal (chainId 137): despliegue del DIG
+amoy = "${RPC_URL_AMOY}"         # red de prueba (chainId 80002)
+
+[fmt]
+line_length = 120

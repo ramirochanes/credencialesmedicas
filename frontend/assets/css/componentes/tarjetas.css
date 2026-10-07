@@ -1,0 +1,151 @@
+/* Tarjetas y paneles de contenido */
+.tarjeta {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+  padding: var(--espacio-5);
+  margin-bottom: var(--espacio-5);
+}
+.tarjeta > h2:first-child,
+.tarjeta > h3:first-child {
+  margin-top: 0;
+}
+.tarjeta--acento {
+  border-top: 6px solid var(--color-turquesa);
+}
+.tarjeta--panel {
+  background: var(--color-panel);
+  box-shadow: none;
+}
+
+/* Tarjetas de "qué podés hacer" en el inicio */
+.tarjeta-acceso {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  height: 100%;
+  border-top: 6px solid var(--color-azul-institucional);
+}
+.tarjeta-acceso:nth-child(2) {
+  border-top-color: var(--color-turquesa);
+}
+.tarjeta-acceso:nth-child(3) {
+  border-top-color: var(--estado-vencida);
+}
+.tarjeta-acceso .boton {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.bloque-credencial-digital {
+  margin-bottom: var(--espacio-5);
+}
+
+/* Lista de datos (definición) */
+.lista-datos {
+  display: grid;
+  grid-template-columns: minmax(140px, max-content) 1fr;
+  gap: var(--espacio-2) var(--espacio-4);
+  margin: 0;
+}
+.lista-datos dt {
+  color: var(--color-texto-secundario);
+  font-size: var(--tamano-chico);
+  font-weight: 600;
+}
+.lista-datos dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Bloque "qué se guarda / qué no" */
+.bloque-garantias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espacio-4);
+}
+.bloque-garantias ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.bloque-garantias h3.no-se-guarda {
+  color: var(--estado-revocada);
+}
+
+/* Equipo */
+.lista-equipo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--espacio-3);
+}
+.lista-equipo li {
+  background: var(--color-panel);
+  border-radius: var(--radio-chico);
+  padding: var(--espacio-3) var(--espacio-4);
+}
+.lista-equipo strong {
+  display: block;
+  color: var(--color-azul-institucional);
+}
+
+.estado-vacio {
+  text-align: center;
+  padding: var(--espacio-6) var(--espacio-4);
+  color: var(--color-texto-secundario);
+}
+.estado-vacio strong {
+  display: block;
+  color: var(--color-azul-institucional);
+  font-size: 1.125rem;
+  margin-bottom: var(--espacio-2);
+}
+
+@media (max-width: 760px) {
+  .bloque-garantias,
+  .lista-equipo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lista-datos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 var(--espacio-4);
+  }
+  .lista-datos dd {
+    margin-bottom: var(--espacio-3);
+  }
+}
+
+/* Texto de entrada de cada sección: qué es y para quién, en lenguaje llano */
+.texto-destacado {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--color-azul-profundo);
+}
+
+/* Guía "Qué es esta sección y cómo se usa" (se pliega sola al ingresar) */
+.guia-seccion > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-azul-institucional);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.guia-seccion__cuerpo {
+  margin: var(--espacio-4) 0 0;
+}
+.guia-seccion__titulo {
+  font-size: 1.05rem;
+  margin: 0 0 var(--espacio-2);
+}
+.guia-seccion ul {
+  padding-left: 1.2rem;
+  margin: 0 0 var(--espacio-2);
+}
+.guia-seccion li + li {
+  margin-top: var(--espacio-1);
+}

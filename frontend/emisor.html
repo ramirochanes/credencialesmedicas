@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel del emisor — Credenciales Médicas</title>
+    <meta name="description" content="Panel para universidades, colegios profesionales y ministerios: registrar, emitir y gestionar credenciales médicas." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-emisor.js"></script>
+  </head>
+  <body>
+    <noscript><p class="aviso aviso--advertencia">Este panel necesita JavaScript y una billetera compatible.</p></noscript>
+    <main id="contenido">
+      <div class="encabezado-pagina">
+        <span class="rotulo-seccion">Universidades, colegios y ministerios</span>
+        <h1>Panel de la institución</h1>
+        <p class="texto-destacado">Esta pantalla es para el personal de la universidad, el colegio médico o el ministerio que otorga títulos y matrículas. Desde acá se cargan las matrículas de los médicos para que cualquier hospital o paciente pueda comprobar después que son verdaderas.</p>
+      </div>
+      <details class="tarjeta guia-seccion" open>
+        <summary>Qué es esta sección y cómo se usa</summary>
+        <div class="grilla-tres-columnas guia-seccion__cuerpo">
+          <div>
+            <h2 class="guia-seccion__titulo">¿Para quién es?</h2>
+            <p>Para el empleado autorizado de la institución que otorga la matrícula o el título.</p>
+            <p>Si sos médico, tu sección es <a href="titular.html">Médicos</a>. Si solo querés saber si una matrícula es válida, no hace falta ingresar: usá el <a href="./">buscador de la página de inicio</a>.</p>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Qué se hace acá?</h2>
+            <ul>
+              <li>Cargar la matrícula o el título de un médico.</li>
+              <li>Confirmar que revisaste sus papeles y otorgarla.</li>
+              <li>Suspenderla si hay una sanción, y volver a habilitarla cuando termina.</li>
+              <li>Darla de baja si corresponde.</li>
+            </ul>
+            <p>Cada paso queda guardado con la fecha y el nombre de la institución, y nadie lo puede borrar ni cambiar después.</p>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Por qué hay que ingresar?</h2>
+            <p>Porque solo la institución puede tocar sus matrículas. Al ingresar, el sistema reconoce para qué institución trabajás.</p>
+            <p>La primera vez, el sistema te muestra un número de cuenta: pasáselo al administrador del registro para que te habilite.</p>
+          </div>
+        </div>
+      </details>
+      <div id="panel-billetera"></div>
+      <div id="area-emisor"></div>
+    </main>
+  </body>
+</html>

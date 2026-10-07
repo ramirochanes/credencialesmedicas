@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>Video pitch — DIG Grupo 1</title>
+<link rel="stylesheet" href="video.css">
+</head>
+<body>
+<div id="fondo"></div>
+
+<!-- 1 · El problema -->
+<section class="escena" id="e1">
+  <div class="centro">
+    <p class="rotulo linea">Chaco · 2026</p>
+    <div class="cifras">
+      <div class="cifra linea"><b>8</b><span>meses</span></div>
+      <div class="cifra linea"><b>2</b><span>hospitales públicos</span></div>
+      <div class="cifra linea"><b>9</b><span>certificados de defunción</span></div>
+    </div>
+    <p class="bajada linea" style="max-width:1200px;font-size:40px">Una mujer atendió con la matrícula de otro médico.</p>
+    <p class="fuente linea">Fuente: Red 43, abril de 2026</p>
+  </div>
+</section>
+
+<!-- 2 · La escala -->
+<section class="escena" id="e2">
+  <div class="centro">
+    <p class="rotulo linea">Argentina</p>
+    <p class="contador linea" id="contador">0</p>
+    <p class="bajada linea" style="max-width:none">médicos matriculados</p>
+    <div class="puntos linea" id="puntos"></div>
+    <p class="bajada linea" style="max-width:none">con registros repartidos en 24 jurisdicciones</p>
+    <div class="metodos" id="metodos">
+      <span class="metodo linea">Llamar</span><span class="metodo linea">Mandar un mail</span><span class="metodo linea">Confiar en un sello</span>
+    </div>
+    <p class="titulo chico linea alerta" id="sellos" style="margin-top:34px">Y los sellos se falsifican.</p>
+    <p class="fuente linea">Fuente: REFEPS, datos al 31/12/2025</p>
+  </div>
+</section>
+
+<!-- 3 · La solución (celular) -->
+<section class="escena" id="e3">
+  <div class="columna"><div id="texto-e3"></div></div>
+  <div class="telefono" id="telefono"><div class="pantalla"><div class="isla"></div><iframe id="sitio-celular" src="../index.html"></iframe></div></div>
+</section>
+
+<!-- 4 · Lo que detecta (notebook) -->
+<section class="escena" id="e4">
+  <div class="columna" style="width:720px"><div id="texto-e4"></div></div>
+  <div class="notebook" id="notebook"><div class="marco"><div class="pantalla"><iframe id="sitio-notebook" src="about:blank"></iframe></div></div><div class="base"></div></div>
+  <div class="archivo" id="archivo"><div class="icono">PDF</div><span id="nombre-archivo">matricula-001.pdf</span></div>
+</section>
+
+<!-- 5 · El negocio -->
+<section class="escena" id="e5">
+  <div class="centro">
+    <p class="rotulo linea">Modelo de negocio</p>
+    <p class="titulo linea">Paga quien verifica</p>
+    <div class="tarjetas">
+      <div class="tarjeta-negocio linea"><h3>Hospitales y clínicas</h3><b>USD 50/mes</b><p>constancias de cada verificación y alertas</p></div>
+      <div class="tarjeta-negocio linea"><h3>Aseguradoras y ART</h3><b>USD 0,10</b><p>por consulta</p></div>
+      <div class="tarjeta-negocio linea"><h3>Colegios y ministerios</h3><b>Piloto sin cargo</b><p>después, USD 0,50 por matriculado por año</p></div>
+    </div>
+    <p class="destacado linea">Registrar una matrícula cuesta <b>menos de USD 0,08</b>. La consulta pública es gratis.</p>
+    <p class="fuente linea">Precios a validar con entrevistas</p>
+  </div>
+</section>
+
+<!-- 6 · Tecnología -->
+<section class="escena" id="e6">
+  <div class="columna" style="width:1640px">
+    <p class="rotulo linea">Tecnología</p>
+    <p class="titulo chico linea">Contrato inteligente en Polygon, red principal</p>
+    <p class="direccion linea" id="direccion"></p>
+    <div class="chips">
+      <span class="chip linea">Solidity + OpenZeppelin</span><span class="chip linea">49 pruebas automáticas</span>
+      <span class="chip linea">Código verificado en Sourcify</span><span class="chip linea">No actualizable: nadie cambia las reglas</span>
+    </div>
+    <div class="dos-columnas" style="width:1300px">
+      <div class="linea"><h3>Se guarda en la blockchain</h3><ul><li>La huella del PDF</li><li>La fecha de cada cambio</li><li>Qué institución la otorgó</li></ul></div>
+      <div class="linea"><h3 class="no-se-guarda">Nunca se guarda</h3><ul><li>El documento</li><li>Datos personales</li><li>Información clínica</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6b · Equipo -->
+<section class="escena" id="e6b">
+  <div class="centro">
+    <p class="rotulo linea">El equipo</p>
+    <p class="titulo chico linea">Derecho, economía, contabilidad, seguros y desarrollo</p>
+    <div class="equipo" id="equipo"></div>
+  </div>
+</section>
+
+<!-- 7 · Cierre -->
+<section class="escena" id="e7">
+  <div class="centro">
+    <p class="titulo linea" style="max-width:1400px">Matrículas médicas que se comprueban en segundos.</p>
+    <p class="url linea">dasder.com/utn-dig</p>
+    <p class="bajada linea" style="max-width:none;font-size:40px">Buscamos un colegio para el piloto.</p>
+  </div>
+  <p class="pie-cierre linea">DIG · Grupo 1 · Diplomatura en Blockchain y Finanzas Digitales · UTN 2026</p>
+</section>
+
+<div class="dedo" id="dedo"></div>
+<div id="marca">Contrato inteligente en <b>Polygon</b> · red principal</div>
+<script type="module" src="director.js"></script>
+</body>
+</html>

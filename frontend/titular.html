@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mis credenciales — Credenciales Médicas</title>
+    <meta name="description" content="Panel del profesional: presentá el QR de tu credencial y sumá antecedentes propios." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-titular.js"></script>
+  </head>
+  <body>
+    <noscript><p class="aviso aviso--advertencia">Este panel necesita JavaScript y una billetera compatible.</p></noscript>
+    <main id="contenido">
+      <div class="encabezado-pagina">
+        <span class="rotulo-seccion">Médicos y profesionales de la salud</span>
+        <h1>Mis matrículas y títulos</h1>
+        <p class="texto-destacado">Esta pantalla es para el médico. Acá ves las matrículas y títulos que cargó tu universidad o tu colegio, y tenés el código QR para mostrárselo a quien te lo pida: un hospital, una clínica o un paciente.</p>
+      </div>
+      <details class="tarjeta guia-seccion" open>
+        <summary>Qué es esta sección y cómo se usa</summary>
+        <div class="grilla-tres-columnas guia-seccion__cuerpo">
+          <div>
+            <h2 class="guia-seccion__titulo">¿Para quién es?</h2>
+            <p>Para el médico o profesional de la salud. Tu matrícula la carga tu colegio o tu universidad, no vos.</p>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Qué se hace acá?</h2>
+            <ul>
+              <li>Ver tus matrículas y títulos, y si están vigentes.</li>
+              <li>Mostrar el QR: quien lo escanea ve al instante si tu matrícula está vigente.</li>
+              <li>Demostrar que la matrícula es tuya cuando un hospital te lo pide: te dan un código de 6 números y lo confirmás desde acá.</li>
+              <li>Sumar cursos o formación propia. Se muestran aparte, aclarando que los declaraste vos.</li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Por qué hay que ingresar?</h2>
+            <p>Para que el sistema sepa cuáles son tus matrículas. No hace falta instalar nada: entrás con tu mail y un código.</p>
+            <p>La primera vez, el sistema te muestra un número de cuenta: pasáselo a tu colegio o universidad para que lo asocie a tu matrícula.</p>
+          </div>
+        </div>
+      </details>
+      <div id="panel-billetera"></div>
+      <div id="area-titular"></div>
+    </main>
+  </body>
+</html>

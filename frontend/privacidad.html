@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacidad y términos — Credenciales Médicas</title>
+    <meta name="description" content="Qué datos se registran, dónde y con qué alcance. Términos de uso del prototipo." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-privacidad.js"></script>
+  </head>
+  <body>
+    <main id="contenido">
+      <article class="tarjeta" style="max-width: 80ch">
+        <span class="rotulo-seccion">Política de privacidad y términos de uso</span>
+        <h1>Privacidad y términos</h1>
+        <p class="texto-secundario">Última actualización: octubre de 2026.</p>
+
+        <h2>1. Qué es este sitio</h2>
+        <p>
+          Prototipo académico del Grupo 1 del Desafío Integrador Grupal de la Diplomatura en Blockchain y Finanzas Digitales (UTN, cohorte 2026).
+          Funciona sobre la red <span id="nombre-red"></span>, con instituciones y profesionales ficticios: las credenciales que muestra son de demostración y
+          <strong>no tienen validez legal</strong>. No reemplaza a los registros oficiales de profesionales de la salud.
+        </p>
+
+        <h2>2. Responsable y contacto</h2>
+        <p>Responsable: integrantes del Grupo 1 del DIG. Contacto para consultas sobre datos: <span id="contacto-privacidad"></span>.</p>
+
+        <h2>3. Qué se registra en la blockchain</h2>
+        <p>La blockchain es pública y permanente. Por diseño, solo se registran:</p>
+        <ul>
+          <li>Huellas SHA-256 de documentos (no permiten reconstruir el documento).</li>
+          <li>Identificadores aleatorios de credencial, que no derivan de datos de la persona.</li>
+          <li>Fechas, estados, tipo de credencial e institución emisora de cada evento.</li>
+          <li>Direcciones de las wallets que operan (instituciones y, si se vinculó, la del titular).</li>
+          <li>Constancias de verificación institucional: qué institución verificó y cuándo.</li>
+          <li>Antecedentes autodeclarados: el texto breve que el propio titular decide publicar.</li>
+        </ul>
+        <p><strong>Nunca</strong> se registran documentos, nombres, DNI, domicilios ni información clínica o de salud.</p>
+
+        <h2>4. Qué pasa en tu navegador</h2>
+        <ul>
+          <li>Los PDF que elegís se procesan en tu dispositivo para calcular su huella. <strong>No se suben a ningún servidor.</strong></li>
+          <li>El sitio no usa cookies. Guarda en el almacenamiento local del navegador un registro de diagnóstico (eventos técnicos y errores) y una caché de listados. Podés verlo, descargarlo o vaciarlo desde «Diagnóstico» en el pie de página.</li>
+          <li>Los códigos de prueba de titularidad que generás se guardan en ese mismo almacenamiento local, para reconocer la respuesta del titular. La respuesta (un link con la firma) se comprueba en tu navegador.</li>
+          <li>El sitio nunca te va a pedir la frase semilla ni la clave privada de tu wallet.</li>
+        </ul>
+
+        <h2>5. Terceros que intervienen</h2>
+        <ul>
+          <li>Nodos RPC públicos de la red, que reciben las consultas (y, como todo servidor, ven tu dirección IP): <span id="lista-rpc"></span>.</li>
+          <li>Tu billetera (por ejemplo MetaMask), si la conectás para operar.</li>
+          <li id="item-acceso-mail" hidden>Privy (Stripe), el servicio de ingreso con mail: recibe tu dirección de correo para enviarte el código y custodia de forma cifrada la cuenta con la que firmás operaciones. Solo se usa si ingresás con mail.</li>
+          <li>El explorador de bloques, solo si hacés clic en un enlace hacia él.</li>
+          <li>El proveedor de hosting de este sitio, que puede registrar accesos según sus propias políticas.</li>
+          <li id="item-colector" hidden>Un colector de diagnóstico propio, que recibe únicamente los errores técnicos para poder corregirlos.</li>
+        </ul>
+
+        <h2>6. Tus derechos (Ley 25.326)</h2>
+        <p>
+          Tenés derecho de acceso, rectificación y supresión de tus datos personales. Como lo registrado en la blockchain no se puede
+          borrar, el sistema evita publicar datos personales. Las correcciones se reflejan con nuevos eventos (por ejemplo, revocación y
+          nueva emisión) y los antecedentes autodeclarados se pueden retirar, aunque su registro histórico permanece.
+          La Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326.
+        </p>
+
+        <h2>7. Términos de uso</h2>
+        <ul>
+          <li>Uso académico y demostrativo, sin garantías de disponibilidad ni de exactitud.</li>
+          <li>Las credenciales de demostración son ficticias y no acreditan nada.</li>
+          <li>La prueba de titularidad es una firma de tu wallet: no mueve fondos, no cuesta gas y no queda registrada en la blockchain.</li>
+          <li>Cada institución es responsable de la veracidad de lo que emite; el registro solo da evidencia de qué emitió y cuándo.</li>
+        </ul>
+        <p>Contrato del registro: <span id="direccion-contrato" class="texto-codigo"></span></p>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+/* Avisos en página, notificaciones flotantes (toasts), diálogos y línea de tiempo */
+.aviso {
+  border-radius: var(--radio-chico);
+  padding: var(--espacio-3) var(--espacio-4);
+  margin-bottom: var(--espacio-4);
+  border: 1px solid;
+  display: flex;
+  gap: var(--espacio-3);
+  align-items: flex-start;
+}
+.aviso p:last-child {
+  margin-bottom: 0;
+}
+.aviso--info {
+  background: var(--color-panel);
+  border-color: var(--color-borde-fuerte);
+}
+.aviso--exito {
+  background: var(--color-exito-fondo);
+  border-color: var(--color-exito);
+  color: #0f5f2d;
+}
+.aviso--error {
+  background: var(--color-error-fondo);
+  border-color: var(--color-error);
+  color: #8a1515;
+}
+.aviso--advertencia {
+  background: var(--color-aviso-fondo);
+  border-color: var(--color-aviso);
+  color: #6f4200;
+}
+.aviso__cerrar {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.contenedor-notificaciones {
+  position: fixed;
+  right: var(--espacio-4);
+  bottom: var(--espacio-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  z-index: 200;
+  max-width: min(420px, calc(100vw - 2rem));
+}
+.notificacion {
+  background: var(--color-azul-profundo);
+  color: var(--color-blanco);
+  border-left: 6px solid var(--color-turquesa);
+  border-radius: var(--radio-chico);
+  padding: var(--espacio-3) var(--espacio-4);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+}
+.notificacion--exito {
+  border-left-color: #4ade80;
+}
+.notificacion--error {
+  border-left-color: #f87171;
+}
+.notificacion a {
+  color: #8fd3db;
+}
+
+dialog.dialogo {
+  border: 0;
+  border-radius: var(--radio);
+  padding: 0;
+  width: min(640px, calc(100vw - 2rem));
+  box-shadow: 0 24px 64px rgb(0 0 0 / 30%);
+}
+dialog.dialogo::backdrop {
+  background: rgb(18 38 63 / 55%);
+}
+.dialogo__cuerpo {
+  padding: var(--espacio-5);
+}
+.dialogo__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-5);
+  background: var(--color-panel);
+}
+.dialogo__registros {
+  max-height: 50vh;
+  overflow: auto;
+  font-family: var(--fuente-codigo);
+  font-size: var(--tamano-minimo);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-chico);
+  padding: var(--espacio-3);
+  white-space: pre-wrap;
+}
+
+/* Historial on-chain como línea de tiempo */
+.linea-tiempo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.linea-tiempo::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--color-borde);
+}
+.linea-tiempo li {
+  position: relative;
+  padding: 0 0 var(--espacio-4) var(--espacio-6);
+}
+.linea-tiempo li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-estado, var(--color-turquesa));
+  border: 3px solid var(--color-blanco);
+  box-shadow: 0 0 0 1px var(--color-borde);
+}
+.linea-tiempo__accion {
+  font-weight: 700;
+  color: var(--color-azul-institucional);
+}
+.linea-tiempo__detalle {
+  font-size: var(--tamano-chico);
+  color: var(--color-texto-secundario);
+}
+
+/* Tablas */
+.tabla-contenedor {
+  overflow-x: auto;
+}
+table.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--tamano-chico);
+}
+.tabla th,
+.tabla td {
+  text-align: left;
+  padding: var(--espacio-2) var(--espacio-3);
+  border-bottom: 1px solid var(--color-borde);
+  vertical-align: top;
+}
+.tabla th {
+  color: var(--color-texto-secundario);
+  font-weight: 700;
+  background: var(--color-panel);
+}
+.tabla td.acciones {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Pestañas */
+.pestanas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1);
+  border-bottom: 2px solid var(--color-borde);
+  margin-bottom: var(--espacio-5);
+}
+.pestanas button {
+  min-height: 44px;
+  padding: 0 var(--espacio-4);
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-texto-secundario);
+  cursor: pointer;
+}
+.pestanas button[aria-selected="true"] {
+  color: var(--color-azul-institucional);
+  border-bottom-color: var(--color-turquesa);
+}

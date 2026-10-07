@@ -1,0 +1,52 @@
+{
+  "credenciales": [
+    {
+      "etiqueta": "demo-credencial-001",
+      "tipo": 2,
+      "estadoObjetivo": "Activa",
+      "hashDocumento": "0x7b561f4a3519ed5e5fec73142eff8fbf3df8fa9f5e23c2239ed100f4b892a6c0",
+      "venceEl": 1861844400,
+      "archivo": "demo/documentos/demo-credencial-001.pdf"
+    },
+    {
+      "etiqueta": "demo-credencial-002",
+      "tipo": 2,
+      "estadoObjetivo": "Suspendida",
+      "hashDocumento": "0xf206c93dad5a08bfe46659016544be61cb96ed31aa0f8d984f0415ea509b0e83",
+      "venceEl": 1861844400,
+      "archivo": "demo/documentos/demo-credencial-002.pdf"
+    },
+    {
+      "etiqueta": "demo-credencial-003",
+      "tipo": 2,
+      "estadoObjetivo": "Revocada",
+      "hashDocumento": "0x9c11b59d71b6ab658072e33dae8b761b4afa796309027a440a6ea027988b77d6",
+      "venceEl": 0,
+      "archivo": "demo/documentos/demo-credencial-003.pdf"
+    },
+    {
+      "etiqueta": "demo-credencial-004",
+      "tipo": 4,
+      "estadoObjetivo": "Activa",
+      "hashDocumento": "0x6f396906df07ef56cc603c42ad9b0639c9099e6cdcedf23d2599b96e69637332",
+      "venceEl": 1793502000,
+      "archivo": "demo/documentos/demo-credencial-004.pdf"
+    },
+    {
+      "etiqueta": "demo-credencial-005",
+      "tipo": 2,
+      "estadoObjetivo": "Validada",
+      "hashDocumento": "0x63e0c19e1c70eee3f91fdaca964883a187b2796dbf2230b9f08f06128287207f",
+      "venceEl": 1861844400,
+      "archivo": "demo/documentos/demo-credencial-005.pdf"
+    },
+    {
+      "etiqueta": "demo-credencial-006",
+      "tipo": 2,
+      "estadoObjetivo": "Pendiente",
+      "hashDocumento": "0x26cad61d0629dd46d6ef33dba9a8ea50519fa43241cbd8d0ea2bce51d34de493",
+      "venceEl": 0,
+      "archivo": "demo/documentos/demo-credencial-006.pdf"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+/* Hoja principal: importa tokens, base, estructura y componentes.
+   Para agregar un componente: crear su archivo en componentes/ e importarlo acá. */
+@import url("variables.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("componentes/botones.css");
+@import url("componentes/formularios.css");
+@import url("componentes/tarjetas.css");
+@import url("componentes/estados-credencial.css");
+@import url("componentes/avisos.css");
+@import url("componentes/portada.css");

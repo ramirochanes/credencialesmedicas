@@ -1,0 +1,25 @@
+# Secretos: NUNCA al repositorio
+.env
+.env.*
+!.env.example
+.claves/
+
+# Artefactos de Foundry
+out/
+cache/
+broadcast/*/31337/
+broadcast/**/dry-run/
+despliegues/31337.json
+
+# Varios
+node_modules/
+.DS_Store
+*.log
+frontend/api/registros/*.log.php
+
+# Paquete para subir al hosting (se regenera)
+publicacion/
+_papelera/
+
+# Archivos que deja la app de Claude (no son del proyecto)
+Claude outputs/

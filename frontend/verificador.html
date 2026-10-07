@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verificación institucional — Credenciales Médicas</title>
+    <meta name="description" content="Hospitales, clínicas y colegios dejan constancia on-chain de la verificación de una credencial." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-verificador.js"></script>
+  </head>
+  <body>
+    <noscript><p class="aviso aviso--advertencia">Este panel necesita JavaScript y una billetera compatible.</p></noscript>
+    <main id="contenido">
+      <div class="encabezado-pagina">
+        <span class="rotulo-seccion">Hospitales y clínicas</span>
+        <h1>Verificación para hospitales y clínicas</h1>
+        <p class="texto-destacado">Esta pantalla es para el hospital o la clínica que va a contratar a un médico o a asignarle guardias. Además de comprobar la matrícula, deja asentado que la comprobaste y con qué fecha, para poder mostrarlo en una auditoría.</p>
+      </div>
+      <details class="tarjeta guia-seccion" open>
+        <summary>Qué es esta sección y cómo se usa</summary>
+        <div class="grilla-tres-columnas guia-seccion__cuerpo">
+          <div>
+            <h2 class="guia-seccion__titulo">¿Para quién es?</h2>
+            <p>Para el personal de recursos humanos o de dirección médica de un hospital o una clínica.</p>
+            <p>Para solo mirar si una matrícula es válida no hace falta ingresar: usá el <a href="./">buscador de la página de inicio</a>, es gratis.</p>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Qué se hace acá?</h2>
+            <ul>
+              <li>Buscar la matrícula del médico, escaneando su QR o pegando el link.</li>
+              <li>Dejar asentado que tu institución la revisó y en qué estado estaba ese día.</li>
+              <li>Pedirle al médico que demuestre que la matrícula es suya: le das un código de 6 números y él lo confirma desde su celular.</li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Por qué hay que ingresar?</h2>
+            <p>Para que la constancia quede a nombre de tu hospital o clínica.</p>
+            <p>La primera vez, el sistema te muestra un número de cuenta: pasáselo al administrador del registro para que te habilite.</p>
+          </div>
+        </div>
+      </details>
+      <div id="panel-billetera"></div>
+      <div id="area-verificador"></div>
+    </main>
+  </body>
+</html>

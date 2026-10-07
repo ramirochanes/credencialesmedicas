@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gobernanza del registro — Credenciales Médicas</title>
+    <meta name="description" content="Padrón de instituciones, cuentas operadoras y pausa de emergencia del registro." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-gobernanza.js"></script>
+  </head>
+  <body>
+    <noscript><p class="aviso aviso--advertencia">Este panel necesita JavaScript y una billetera compatible.</p></noscript>
+    <main id="contenido">
+      <div class="encabezado-pagina">
+        <span class="rotulo-seccion">Administración</span>
+        <h1>Administración del registro</h1>
+        <p class="texto-destacado">Esta pantalla es para quienes administran el registro. Deciden qué universidades, colegios, ministerios y hospitales participan. Un médico, una universidad o un hospital no necesitan entrar acá.</p>
+      </div>
+      <details class="tarjeta guia-seccion" open>
+        <summary>Qué es esta sección y cómo se usa</summary>
+        <div class="grilla-tres-columnas guia-seccion__cuerpo">
+          <div>
+            <h2 class="guia-seccion__titulo">¿Para quién es?</h2>
+            <p>Para el administrador del registro. En un sistema real, cada cambio lo tienen que aprobar varias personas juntas, no una sola.</p>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Qué se hace acá?</h2>
+            <ul>
+              <li>Sumar una institución nueva y decir qué puede otorgar (títulos, matrículas, especialidades).</li>
+              <li>Habilitar a las personas que trabajan para cada institución.</li>
+              <li>Suspender a una institución si deja de estar autorizada.</li>
+              <li>Frenar todo el sistema ante una emergencia, por ejemplo si roban un acceso.</li>
+            </ul>
+            <p>El administrador no puede otorgar, suspender ni dar de baja matrículas: eso solo lo hace la institución que las otorgó.</p>
+          </div>
+          <div>
+            <h2 class="guia-seccion__titulo">¿Por qué hay que ingresar?</h2>
+            <p>Porque estos cambios los puede hacer solo el administrador. Cualquiera que ingrese puede ver la lista de instituciones, pero no modificarla.</p>
+          </div>
+        </div>
+      </details>
+      <div id="panel-billetera"></div>
+      <div id="area-gobernanza"></div>
+    </main>
+  </body>
+</html>

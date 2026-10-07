@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Credenciales Médicas — Verificación pública</title>
+    <meta name="description" content="Verificá si una credencial médica fue emitida por una institución autorizada, si el documento no fue alterado y cuál es su estado vigente." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-inicio.js"></script>
+  </head>
+  <body>
+    <noscript><p class="aviso aviso--advertencia">Este sitio necesita JavaScript para consultar el registro.</p></noscript>
+    <main id="contenido">
+      <section class="portada" aria-labelledby="titulo-portada">
+        <span class="rotulo-seccion">Verificación pública</span>
+        <h1 id="titulo-portada">¿Esta credencial médica es válida hoy?</h1>
+        <p class="portada__bajada">
+          Consultá en segundos si un título, una matrícula o una especialidad la otorgó una institución autorizada,
+          si el documento es el original y si es válida hoy. Sin registrarte y gratis.
+        </p>
+        <form id="formulario-busqueda" class="portada__busqueda" role="search" novalidate>
+          <label for="campo-busqueda" class="solo-lectores">Identificador o link de la credencial</label>
+          <div class="busqueda-credencial">
+            <input id="campo-busqueda" type="search" autocomplete="off" spellcheck="false"
+              placeholder="Código o link del QR de la matrícula" aria-describedby="ayuda-busqueda error-busqueda" />
+            <button class="boton boton--turquesa" type="submit">Verificar</button>
+          </div>
+          <p id="error-busqueda" class="error-campo" role="alert" hidden></p>
+        </form>
+        <p class="portada__alternativa" id="ayuda-busqueda">
+          Si escaneaste el QR con la cámara del teléfono, ya llegaste al resultado. ¿Tenés el PDF? Verificalo acá abajo.
+        </p>
+      </section>
+
+      <div class="grilla-dos-columnas">
+        <section class="tarjeta tarjeta--acento" aria-labelledby="titulo-pdf">
+          <span class="rotulo-seccion">Integridad del documento</span>
+          <h2 id="titulo-pdf">Verificar un PDF</h2>
+          <p>Calculamos la huella digital del archivo en tu navegador y la buscamos en el registro. Si alguien modificó una sola letra, la huella cambia y no aparece.</p>
+          <div id="zona-documento"></div>
+          <div id="resultado-documento" aria-live="polite"></div>
+        </section>
+
+        <section class="tarjeta" aria-labelledby="titulo-garantias">
+          <span class="rotulo-seccion">Qué se registra</span>
+          <h2 id="titulo-garantias">Una capa de confianza, no un reemplazo</h2>
+          <div class="bloque-garantias">
+            <div>
+              <h3>En el registro público (blockchain)</h3>
+              <ul>
+                <li>Una huella del documento, que sirve para reconocerlo pero no permite leerlo</li>
+                <li>Fecha y hora de cada cambio (otorgada, suspendida, dada de baja)</li>
+                <li>Qué institución la otorgó</li>
+                <li>Si está vigente hoy y su historial</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="no-se-guarda">Nunca se guarda</h3>
+              <ul>
+                <li>Documentos completos</li>
+                <li>Datos personales sensibles</li>
+                <li>Información clínica</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="pilares" aria-label="Qué permite comprobar">
+        <div class="pilar">
+          <h3>Quién la otorgó</h3>
+          <p>Que la otorgó una universidad, un colegio o un ministerio autorizado.</p>
+        </div>
+        <div class="pilar">
+          <h3>Que no fue adulterada</h3>
+          <p>Que el documento es exactamente el que entregó la institución.</p>
+        </div>
+        <div class="pilar">
+          <h3>Si está vigente</h3>
+          <p>Si hoy está vigente, suspendida, vencida o dada de baja, y desde cuándo.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="titulo-accesos">
+        <span class="rotulo-seccion">Quién es quién</span>
+        <h2 id="titulo-accesos">¿Quién sos?</h2>
+        <div class="grilla-tres-columnas">
+          <article class="tarjeta tarjeta-acceso">
+            <h3>Universidades, colegios y ministerios</h3>
+            <p>Cargan las matrículas y títulos que otorgan, y las suspenden o dan de baja cuando corresponde.</p>
+            <a class="boton boton--primario" href="emisor.html">Panel de la institución</a>
+          </article>
+          <article class="tarjeta tarjeta-acceso">
+            <h3>Médicos</h3>
+            <p>Ven sus matrículas, muestran el QR a quien se lo pida y suman cursos propios.</p>
+            <a class="boton boton--primario" href="titular.html">Mis matrículas</a>
+          </article>
+          <article class="tarjeta tarjeta-acceso">
+            <h3>Hospitales y clínicas</h3>
+            <p>Antes de contratar o asignar guardias, comprueban la matrícula y dejan constancia de que lo hicieron.</p>
+            <a class="boton boton--primario" href="verificador.html">Panel de verificación</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="tarjeta" aria-labelledby="titulo-tecnologia">
+        <span class="rotulo-seccion">Cómo funciona por dentro</span>
+        <h2 id="titulo-tecnologia">Tecnología</h2>
+        <div class="grilla-tres-columnas guia-seccion__cuerpo">
+          <div>
+            <h3 class="guia-seccion__titulo">Blockchain</h3>
+            <ul>
+              <li>Red: <strong id="tecnologia-red">Polygon</strong>.</li>
+              <li>Contrato inteligente: <span id="tecnologia-contrato">pendiente de despliegue</span>.</li>
+              <li>El código del contrato es público y está verificado en <a href="https://sourcify.dev/" target="_blank" rel="noopener">Sourcify</a>.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="guia-seccion__titulo">Qué guarda el contrato</h3>
+            <ul>
+              <li>Las instituciones autorizadas (padrón) y quién opera por cada una.</li>
+              <li>Cada cambio de estado de una matrícula, con fecha e institución.</li>
+              <li>La huella SHA-256 del PDF, calculada en el navegador: el documento nunca se sube.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="guia-seccion__titulo">Herramientas</h3>
+            <ul>
+              <li>Solidity 0.8.30 con OpenZeppelin 5.7 (control de roles y pausa de emergencia), desarrollado y probado con Foundry: 49 pruebas automáticas.</li>
+              <li>Sitio estático en JavaScript con ethers.js, sin servidor propio ni base de datos.</li>
+              <li>Ingreso con mail y código mediante Privy (cuenta embebida, clases 30 y 38), sin instalar MetaMask.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="tarjeta" aria-labelledby="titulo-equipo">
+        <span class="rotulo-seccion">Equipo</span>
+        <h2 id="titulo-equipo">Grupo 1 — Desafío Integrador Grupal</h2>
+        <ul id="lista-equipo" class="lista-equipo"></ul>
+      </section>
+    </main>
+  </body>
+</html>
