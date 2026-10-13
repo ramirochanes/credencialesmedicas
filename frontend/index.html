@@ -9,6 +9,7 @@
     <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/estilos.css" />
     <script type="module" src="assets/js/paginas/pagina-inicio.js"></script>
+    <script type="module" src="assets/js/componentes/video-portada.js"></script>
   </head>
   <body>
     <noscript><p class="aviso aviso--advertencia">Este sitio necesita JavaScript para consultar el registro.</p></noscript>
@@ -37,10 +38,13 @@
       <section class="tarjeta seccion-video" aria-labelledby="titulo-video">
         <span class="rotulo-seccion">En dos minutos y medio</span>
         <h2 id="titulo-video">Qué es y cómo funciona</h2>
-        <video class="video-presentacion" width="1280" height="720" style="display:block;width:100%;max-width:960px;height:auto;margin:0 auto;border-radius:12px;background:#0b1a2e" controls preload="none" playsinline poster="assets/video/video-pitch-portada.jpg">
-          <source src="assets/video/video-pitch.mp4" type="video/mp4" />
-          Tu navegador no puede reproducir el video. <a href="assets/video/video-pitch.mp4">Descargalo acá</a>.
-        </video>
+        <div class="video-portada" id="video-portada" data-youtube-id="qY6CjE86R5Y">
+          <button type="button" class="video-portada__boton" aria-label="Reproducir el video: qué es y cómo funciona">
+            <img src="assets/video/video-pitch-portada.jpg" width="1280" height="720" alt="" loading="lazy" />
+            <span class="video-portada__icono" aria-hidden="true"></span>
+          </button>
+        </div>
+        <p class="video-enlace-externo"><a href="https://www.youtube.com/watch?v=qY6CjE86R5Y" target="_blank" rel="noopener">Ver el video en YouTube</a></p>
       </section>
 
       <div class="grilla-dos-columnas">

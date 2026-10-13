@@ -23,3 +23,13 @@ _papelera/
 
 # Archivos que deja la app de Claude (no son del proyecto)
 Claude outputs/
+
+# Intermedios del video pitch (el entregable es DIG-Grupo1-Video-pitch-v2-voz-final.mp4)
+entregables/_to_delete/
+entregables/_hoja_escenas/
+entregables/DIG-Grupo1-Video-pitch-v2-con-musica.mp4
+entregables/DIG-Grupo1-Video-pitch-v2-con-voz.mp4
+entregables/DIG-Grupo1-Video-pitch-v2-con-voz-y-musica.mp4
+entregables/DIG-Grupo1-Video-pitch-v2-voz-sincronizada.mp4
+# Cortina musical: licencia sin revisar (DT-17); queda solo dentro del video
+entregables/*.mp3

@@ -8,6 +8,9 @@ Es una capa de confianza sobre los registros que ya tienen universidades, colegi
 | Entregable del DIG | Dónde está |
 |---|---|
 | 4 · Solución técnica | `src/` (contrato), `test/` (49 tests), `script/` (deploy y semillas), `frontend/` (DApp) |
+| Documento de modelado | `entregables/DIG-Grupo1-Documento-de-modelado.pdf` |
+| Modelo de negocio y precio | `entregables/DIG-Grupo1-Canvas-y-precio.pdf` |
+| Video pitch (2:38, con voz) | [YouTube](https://www.youtube.com/watch?v=qY6CjE86R5Y) · `entregables/DIG-Grupo1-Video-pitch-v2-voz-final.mp4` · texto en `entregables/DIG-Grupo1-Speech-voz-en-off.md` · fuente en [`herramientas/video-pitch/`](herramientas/video-pitch/README.md) |
 | 5 · Modelado del contrato | [`docs/modelado-contrato.md`](docs/modelado-contrato.md) |
 | Arquitectura y decisiones | [`docs/arquitectura.md`](docs/arquitectura.md) |
 | Despliegue (Polygon + FTP) | [`docs/despliegue.md`](docs/despliegue.md) |

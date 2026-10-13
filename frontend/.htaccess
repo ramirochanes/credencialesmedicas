@@ -6,7 +6,7 @@
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "DENY"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://polygon-bor-rpc.publicnode.com https://polygon.drpc.org https://auth.privy.io https://polygon-mainnet.rpc.privy.systems; frame-src https://auth.privy.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://polygon-bor-rpc.publicnode.com https://polygon.drpc.org https://auth.privy.io https://polygon-mainnet.rpc.privy.systems; frame-src https://auth.privy.io https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
 </IfModule>
 <IfModule mod_mime.c>
   AddType text/javascript .js

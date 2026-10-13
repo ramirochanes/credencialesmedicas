@@ -6,6 +6,7 @@ const DIRECCION_RED_PRINCIPAL = "0x374adD49ce1101BC440b431EC24eee36a6A98565";
 const ID_VIGENTE = "0x5228c2ac58424bc43bc8dd25439c78a139824cbffcf6b7664673503b65b03355";
 const ID_SUSPENDIDA = "0x265140c3904c9770142543de93837125afc5691bdb3bc9e7efb6d2bec4e2bb05";
 const ID_BAJA = "0xc6fc60428ae3b66214fa6a824092d29bd02ae02da16473f3d2aafa7a9e5f456e";
+let idMatriculaNueva = ID_VIGENTE; // la reemplaza la escena del colegio con la que otorga en vivo
 
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
 const $ = (s) => document.querySelector(s);
@@ -65,6 +66,120 @@ async function moverDedo(marco, el, escala = 1) {
 async function tocar() { dedo.classList.add("toque"); await esperar(160); dedo.classList.remove("toque"); await esperar(120); }
 
 // ---------- escenas ----------
+// ---------- 2b: cómo funciona (diagrama de flujo, paso a paso) ----------
+const PASOS_FLUJO = [
+  "El médico presenta su título y la documentación.",
+  "El colegio revisa los papeles y otorga la matrícula. En la blockchain queda la huella del PDF.",
+  "El médico recibe su matrícula con un QR.",
+  "Cualquiera la consulta gratis y sin registrarse. Esa consulta no queda registrada.",
+  "Un hospital que verifica antes de contratar deja constancia. Esa sí queda registrada.",
+  "Si hay una sanción, el colegio la suspende o la da de baja, y todas las consultas lo ven al instante.",
+];
+async function escenaFlujo() {
+  const contenedor = $("#flujo");
+  contenedor.innerHTML = await fetch("flujo.svg").then((r) => r.text());
+  const e = await activarEscena("#e2b");
+  e.querySelectorAll(".linea").forEach((l) => l.classList.add("visible"));
+  for (let n = 1; n <= PASOS_FLUJO.length; n++) {
+    contenedor.querySelectorAll(".paso.visible").forEach((g) => g.classList.add("atenuado"));
+    $("#numero-paso").textContent = n;
+    $("#texto-paso").textContent = PASOS_FLUJO[n - 1];
+    contenedor.querySelectorAll(`.paso-${n}`).forEach((g) => g.classList.add("visible"));
+    await esperar(n === 2 || n >= 4 ? 3800 : 3000);
+  }
+  contenedor.querySelectorAll(".paso").forEach((g) => g.classList.remove("atenuado"));
+  $("#numero-paso").textContent = "✓";
+  $("#texto-paso").textContent = "Una capa de confianza sobre los registros que ya existen: nadie puede borrar ni modificar lo registrado.";
+  await esperar(3600);
+}
+
+// ---------- 2c: el colegio otorga la matrícula (panel real) ----------
+async function ingresarComoColegio(marco) {
+  const doc = () => marco.contentDocument;
+  await esperarElemento(doc, "button");
+  const boton = [...doc().querySelectorAll("button")].find((b) => /MetaMask/.test(b.textContent));
+  boton?.click();
+  await esperarElemento(doc, "#solicitud-tipo", 30000);
+}
+async function hacerClic(marco, el) {
+  const escala = 0.66875;
+  await moverDedo(marco, el, escala); await tocar();
+  el.click();
+}
+async function escenaColegio(listoParaColegio) {
+  const marco = $("#sitio-colegio");
+  const doc = () => marco.contentDocument;
+  const ventana = () => marco.contentWindow;
+  await listoParaColegio;
+  const e = await activarEscena("#e2c");
+  const [rotulo, titulo, ...resto] = e.querySelectorAll(".columna > .linea");
+  rotulo.classList.add("visible"); titulo.classList.add("visible");
+  const items = [...$("#pasos-colegio").children];
+  items.forEach((li) => li.classList.add("visible"));
+  resto.forEach((l) => l.classList.add("visible"));
+  $("#notebook-colegio").classList.add("visible");
+  const marcar = (i) => items.forEach((li, j) => { li.classList.toggle("actual", j === i); li.classList.toggle("hecho", j < i); });
+  await esperar(900);
+
+  // 1 · pedido
+  marcar(0);
+  const pestanas = doc().querySelector("#solicitud-tipo").closest(".tarjeta");
+  await desplazar(ventana(), pestanas.getBoundingClientRect().top + ventana().scrollY - 90, 1200);
+  const expediente = doc().querySelector("#solicitud-referencia");
+  await hacerClic(marco, expediente);
+  const texto = "EXP-DEMO-2026-0042";
+  for (let i = 1; i <= texto.length; i++) { expediente.value = texto.slice(0, i); await esperar(45); }
+  await esperar(300);
+  const enviar = [...doc().querySelectorAll("form button[type=submit]")].find((b) => /Cargar pedido/.test(b.textContent));
+  await hacerClic(marco, enviar);
+  const seguir = await (async () => {
+    for (let k = 0; k < 600; k++) {
+      const x = [...doc().querySelectorAll("button")].find((y) => /revisar los papeles/.test(y.textContent));
+      if (x) return x; await esperar(50);
+    }
+  })();
+  await esperar(900);
+
+  // 2 · revisión
+  marcar(1);
+  await hacerClic(marco, seguir);
+  const botonRevisado = await (async () => {
+    for (let k = 0; k < 400; k++) {
+      const b = [...doc().querySelectorAll("button")].find((x) => x.textContent.trim() === "Papeles revisados");
+      if (b) return b; await esperar(50);
+    }
+  })();
+  await desplazar(ventana(), botonRevisado.closest("fieldset").getBoundingClientRect().top + ventana().scrollY - 220, 1000);
+  await esperar(500);
+  await hacerClic(marco, botonRevisado);
+
+  // 3 · otorgar
+  const bloqueOtorgar = await (async () => {
+    for (let k = 0; k < 400; k++) {
+      const f = [...doc().querySelectorAll("fieldset")].find((x) => /Otorgar la matrícula/.test(x.textContent));
+      if (f) return f; await esperar(50);
+    }
+  })();
+  marcar(2);
+  await desplazar(ventana(), bloqueOtorgar.getBoundingClientRect().top + ventana().scrollY - 100, 1000);
+  await esperar(400);
+  const zona = bloqueOtorgar.querySelector(".selector-documento");
+  await soltarArchivo(marco, zona, "pdf/matricula-nueva.pdf", "matricula-nueva.pdf", true, $("#archivo-colegio"));
+  await esperar(900);
+  const otorgar = [...bloqueOtorgar.querySelectorAll("button")].find((b) => /Otorgar matrícula/.test(b.textContent));
+  await hacerClic(marco, otorgar);
+  dedo.style.opacity = 0;
+  await esperarElemento(doc, "[class*='estado--activa']", 30000);
+  idMatriculaNueva = doc().querySelector("#gestion-id").value;
+  const estado = doc().querySelector("[class*='estado--activa']").closest(".tarjeta") || doc().querySelector("[class*='estado--activa']");
+  await desplazar(ventana(), estado.getBoundingClientRect().top + ventana().scrollY - 100, 900);
+  items.forEach((li) => { li.classList.remove("actual"); li.classList.add("hecho"); });
+  $("#notebook-colegio").classList.add("zoom");
+  await esperar(3200);
+  $("#notebook-colegio").classList.remove("zoom");
+  await esperar(900);
+}
+
 async function escenaProblema() {
   const e = await activarEscena("#e1");
   await esperar(400);
@@ -111,14 +226,12 @@ async function escenaSolucion() {
   const marco = $("#sitio-celular");
   const doc = () => marco.contentDocument;
   $("#telefono").classList.add("visible");
-  await cambiarTexto(texto, "La solución", "Una capa de confianza", "El colegio otorga la matrícula como siempre y deja en blockchain una constancia de cada cambio, que nadie puede borrar.");
   $("#marca").classList.add("visible");
-  await esperar(3200);
   await cambiarTexto(texto, "Verificación pública", "¿Esta matrícula es válida hoy?", "Cualquier hospital o paciente lo comprueba en segundos, sin registrarse.");
   await esperar(1200);
   const campo = await esperarElemento(doc, "#campo-busqueda");
   await moverDedo(marco, campo); await tocar();
-  for (let i = 0; i < ID_VIGENTE.length; i += 3) { campo.value = ID_VIGENTE.slice(0, i + 3); await esperar(26); }
+  for (let i = 0; i < idMatriculaNueva.length; i += 3) { campo.value = idMatriculaNueva.slice(0, i + 3); await esperar(26); }
   await esperar(250);
   await moverDedo(marco, doc().querySelector("#formulario-busqueda button[type=submit]")); await tocar();
   dedo.style.opacity = 0;
@@ -138,11 +251,10 @@ async function escenaSolucion() {
   await esperar(2200);
 }
 
-async function soltarArchivo(marco, zona, rutaPdf, nombre, original) {
+async function soltarArchivo(marco, zona, rutaPdf, nombre, original, archivo = $("#archivo")) {
   const escala = 0.66875;
-  const archivo = $("#archivo");
   archivo.querySelector(".icono").classList.toggle("original", original);
-  $("#nombre-archivo").textContent = nombre;
+  archivo.querySelector("span").textContent = nombre;
   Object.assign(archivo.style, { transition: "none", left: "760px", top: "900px", opacity: 0, transform: "rotate(-8deg)" });
   await esperar(60);
   archivo.style.transition = "";
@@ -170,7 +282,7 @@ async function escenaDetecta() {
   const zonaCarga = await esperarElemento(doc, "#zona-contraste .selector-documento");
   await desplazar(marco.contentWindow, doc().querySelector("#titulo-documento").getBoundingClientRect().top + marco.contentWindow.scrollY - 120, 1600);
   await esperar(500);
-  await soltarArchivo(marco, zonaCarga, "pdf/matricula-001.pdf", "matricula-001.pdf", true);
+  await soltarArchivo(marco, zonaCarga, "pdf/matricula-nueva.pdf", "matricula-nueva.pdf", true);
   await esperarElemento(doc, "#resultado-contraste .aviso").catch(() => {});
   await esperar(300);
   $("#notebook").classList.add("zoom");
@@ -179,7 +291,7 @@ async function escenaDetecta() {
   await esperar(800);
   await cambiarTexto(texto, "Adulteraciones", "Si alguien lo modifica, se nota", "Basta un cambio mínimo en el archivo para que no coincida.", { chico: true });
   doc().querySelector("#resultado-contraste").replaceChildren();
-  await soltarArchivo(marco, zonaCarga, "pdf/matricula-001-modificada.pdf", "matricula-001-modificada.pdf", false);
+  await soltarArchivo(marco, zonaCarga, "pdf/matricula-nueva-modificada.pdf", "matricula-nueva-modificada.pdf", false);
   await esperarElemento(doc, "#resultado-contraste .aviso").catch(() => {});
   await esperar(300);
   $("#notebook").classList.add("zoom");
@@ -235,14 +347,17 @@ async function escenaCierre() {
 }
 
 window.correrVideo = async function () {
-  const notebook = $("#sitio-notebook");
-  const precarga = cargarMarco(notebook, `../verificar.html?c=${ID_VIGENTE}`);
+  const marcoColegio = $("#sitio-colegio");
+  const listoParaColegio = cargarMarco(marcoColegio, "../emisor.html").then(() => ingresarComoColegio(marcoColegio));
   await new Promise((ok) => ($("#sitio-celular").contentDocument?.readyState === "complete" ? ok() : $("#sitio-celular").addEventListener("load", ok, { once: true })));
   const marcas = {};
   const t0 = performance.now();
   const marcar = (n) => (marcas[n] = ((performance.now() - t0) / 1000).toFixed(1));
   marcar("problema"); await escenaProblema();
   marcar("escala"); await escenaEscala();
+  marcar("flujo"); await escenaFlujo();
+  marcar("colegio"); await escenaColegio(listoParaColegio);
+  const precarga = cargarMarco($("#sitio-notebook"), `../verificar.html?c=${idMatriculaNueva}`);
   marcar("solucion"); await escenaSolucion();
   await precarga;
   marcar("detecta"); await escenaDetecta();

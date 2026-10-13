@@ -1,7 +1,15 @@
 import { chromium } from "playwright-core";
 import { writeFileSync } from "node:fs";
-const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium-1194/chrome-linux/chrome" });
-const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
+const b = await chromium.launch({ executablePath: process.env.RUTA_CHROMIUM || undefined });
+const ctx = await b.newContext({ viewport: { width: 1920, height: 1080 } });
+// Cuenta de prueba que opera para el «Colegio Médico Demo A» en la red local (solo para la escena del colegio).
+const cuentaColegio = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+await ctx.addInitScript(`window.ethereum = { isMetaMask: true, async request({ method, params }) {
+  if (method === "eth_requestAccounts" || method === "eth_accounts") return ["${cuentaColegio}"];
+  if (method === "wallet_switchEthereumChain" || method === "wallet_addEthereumChain") return null;
+  const r = await fetch("http://127.0.0.1:8545", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: Date.now(), method, params: params ?? [] }) });
+  const j = await r.json(); if (j.error) { const e = new Error(j.error.message); e.code = j.error.code; throw e; } return j.result; }, on() {}, removeListener() {} };`);
+const p = await ctx.newPage();
 const errores = []; p.on("pageerror", e => errores.push(e.message)); p.on("console", m => m.type() === "error" && errores.push(m.text()));
 await p.goto("http://127.0.0.1:8080/_video/video.html");
 await p.waitForTimeout(2000);
