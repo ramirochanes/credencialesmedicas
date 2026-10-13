@@ -5,9 +5,9 @@ Se corre desde la carpeta `entregables/`:
 
     python3 ../herramientas/video-pitch/mezclar-voz.py
 
-Necesita ffmpeg 4.4 o posterior. Genera `DIG-Grupo1-Video-pitch-v2-voz-final.mp4`.
+Necesita ffmpeg 4.4 o posterior. Genera `fuentes/DIG-Grupo1-Video-pitch-v2-voz-final.mp4`.
 
-Cada toma de voz es un archivo de `entregables/Audios/` y entra en el segundo en que empieza su
+Cada toma de voz es un archivo de `entregables/fuentes/Audios/` y entra en el segundo en que empieza su
 escena. Los inicios de escena se midieron cuadro por cuadro sobre `fuentes/DIG-Grupo1-Video-pitch-v2.mp4`
 (0, 13, 25, 50, 72, 90, 117, 130, 141 y 148 s). Qué dice cada toma se verificó con una
 transcripción automática (whisper-tiny). El audio 16 es una versión descartada del cierre y no se usa.
@@ -18,21 +18,21 @@ from pathlib import Path
 
 VIDEO_BASE = "fuentes/DIG-Grupo1-Video-pitch-v2.mp4"
 CORTINA = "fuentes/ANtarcticbreeze - Corporate Technology.mp3"  # fuera del repo (licencia sin revisar)
-SALIDA = "DIG-Grupo1-Video-pitch-v2-voz-final.mp4"
+SALIDA = "fuentes/DIG-Grupo1-Video-pitch-v2-voz-final.mp4"
 DURACION_PITCH = 158.83  # segundos, igual al video base
 
 # (bloque del speech, archivo de la toma, segundo del video donde empieza a hablar)
 TOMAS_PITCH = [
-    ("El problema",     "Audios/Vivero Del Botanico 8-esv2-35p-bg-10p-music-19p.wav",   1.5),
-    ("La escala",       "Audios/Vivero Del Botanico 9-esv2-50p-bg-10p-music-10p.wav",  12.9),
-    ("Cómo funciona",   "Audios/Vivero Del Botanico 10-esv2-50p-bg-10p-music-10p.wav", 25.8),
-    ("El colegio",      "Audios/Vivero Del Botanico 11-esv2-50p-bg-10p-music-10p.wav", 50.6),
-    ("La consulta",     "Audios/Vivero Del Botanico 19-esv2-50p-bg-10p-music-10p.wav", 72.6),
-    ("Lo que detecta",  "Audios/Vivero Del Botanico 12-esv2-42p-bg-10p-music-10p.wav", 90.5),
-    ("El negocio",      "Audios/Vivero Del Botanico 13-esv2-50p-bg-10p-music-10p.wav", 117.3),
-    ("La tecnología",   "Audios/Vivero Del Botanico 14-esv2-50p-bg-10p-music-10p.wav", 132.0),
-    ("El equipo",       "Audios/Vivero Del Botanico 15-esv2-50p-bg-10p-music-10p.wav", 141.6),
-    ("El cierre",       "Audios/Vivero Del Botanico 17-esv2-50p-bg-10p-music-10p.wav", 148.6),
+    ("El problema",     "fuentes/Audios/Vivero Del Botanico 8-esv2-35p-bg-10p-music-19p.wav",   1.5),
+    ("La escala",       "fuentes/Audios/Vivero Del Botanico 9-esv2-50p-bg-10p-music-10p.wav",  12.9),
+    ("Cómo funciona",   "fuentes/Audios/Vivero Del Botanico 10-esv2-50p-bg-10p-music-10p.wav", 25.8),
+    ("El colegio",      "fuentes/Audios/Vivero Del Botanico 11-esv2-50p-bg-10p-music-10p.wav", 50.6),
+    ("La consulta",     "fuentes/Audios/Vivero Del Botanico 19-esv2-50p-bg-10p-music-10p.wav", 72.6),
+    ("Lo que detecta",  "fuentes/Audios/Vivero Del Botanico 12-esv2-42p-bg-10p-music-10p.wav", 90.5),
+    ("El negocio",      "fuentes/Audios/Vivero Del Botanico 13-esv2-50p-bg-10p-music-10p.wav", 117.3),
+    ("La tecnología",   "fuentes/Audios/Vivero Del Botanico 14-esv2-50p-bg-10p-music-10p.wav", 132.0),
+    ("El equipo",       "fuentes/Audios/Vivero Del Botanico 15-esv2-50p-bg-10p-music-10p.wav", 141.6),
+    ("El cierre",       "fuentes/Audios/Vivero Del Botanico 17-esv2-50p-bg-10p-music-10p.wav", 148.6),
 ]
 
 

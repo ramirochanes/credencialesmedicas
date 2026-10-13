@@ -1,6 +1,6 @@
 # Video pitch — fuente reproducible
 
-Versión vigente: **v2 con voz**, `entregables/DIG-Grupo1-Video-pitch-v2-voz-final.mp4` (1920×1080, 2:38).
+Versión vigente: **v2 con voz**, `entregables/fuentes/DIG-Grupo1-Video-pitch-v2-voz-final.mp4` (1920×1080, 2:38).
 Publicado en YouTube: https://www.youtube.com/watch?v=qY6CjE86R5Y (embebido en la portada del sitio).
 
 Se arma en dos pasos: primero se graba la imagen a partir del sitio real (video mudo
@@ -14,7 +14,7 @@ Se arma en dos pasos: primero se graba la imagen a partir del sitio real (video 
 - `pdf/`: PDF de prueba (original y modificado) para la escena de detección.
 - `grabar-video.mjs`: graba la página cuadro por cuadro (Chromium + Playwright) y arma la lista para ffmpeg.
 - `mezclar-voz.py`: mezcla las tomas de voz y la cortina sobre el video mudo.
-- `portada/portada.html`: la portada (miniatura) del video, 1920×1080. La versión exportada está en `entregables/DIG-Grupo1-Video-portada.jpg` y en `frontend/assets/video/video-pitch-portada.jpg`.
+- `portada/portada.html`: la portada (miniatura) del video, 1920×1080. La versión exportada está en `entregables/fuentes/DIG-Grupo1-Video-portada.jpg` y en `frontend/assets/video/video-pitch-portada.jpg`.
 
 ## 1 · Grabar la imagen
 
@@ -29,7 +29,7 @@ Se arma en dos pasos: primero se graba la imagen a partir del sitio real (video 
 
 Desde `entregables/`: `python3 ../herramientas/video-pitch/mezclar-voz.py`
 
-Las tomas están en `entregables/Audios/`, el video mudo y la cortina en `entregables/fuentes/` (la cortina no está en el repo) y el texto grabado en `entregables/DIG-Grupo1-Speech-voz-en-off.md`.
+Las tomas están en `entregables/fuentes/Audios/`, el video mudo y la cortina en `entregables/fuentes/` (la cortina no está en el repo) y el texto grabado en `entregables/fuentes/DIG-Grupo1-Speech-voz-en-off.md`.
 
 | Bloque | Toma | Entra en |
 |---|---|---|
