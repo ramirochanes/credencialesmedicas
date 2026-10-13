@@ -32,4 +32,6 @@ entregables/DIG-Grupo1-Video-pitch-v2-con-voz.mp4
 entregables/DIG-Grupo1-Video-pitch-v2-con-voz-y-musica.mp4
 entregables/DIG-Grupo1-Video-pitch-v2-voz-sincronizada.mp4
 # Cortina musical: licencia sin revisar (DT-17); queda solo dentro del video
-entregables/*.mp3
+entregables/**/*.mp3
+# Versiones anteriores e intermedias de los entregables (no se entregan)
+entregables/_versiones-anteriores/

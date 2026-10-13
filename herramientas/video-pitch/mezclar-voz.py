@@ -8,7 +8,7 @@ Se corre desde la carpeta `entregables/`:
 Necesita ffmpeg 4.4 o posterior. Genera `DIG-Grupo1-Video-pitch-v2-voz-final.mp4`.
 
 Cada toma de voz es un archivo de `entregables/Audios/` y entra en el segundo en que empieza su
-escena. Los inicios de escena se midieron cuadro por cuadro sobre `DIG-Grupo1-Video-pitch-v2.mp4`
+escena. Los inicios de escena se midieron cuadro por cuadro sobre `fuentes/DIG-Grupo1-Video-pitch-v2.mp4`
 (0, 13, 25, 50, 72, 90, 117, 130, 141 y 148 s). Qué dice cada toma se verificó con una
 transcripción automática (whisper-tiny). El audio 16 es una versión descartada del cierre y no se usa.
 """
@@ -16,8 +16,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-VIDEO_BASE = "DIG-Grupo1-Video-pitch-v2.mp4"
-CORTINA = "ANtarcticbreeze - Corporate Technology.mp3"
+VIDEO_BASE = "fuentes/DIG-Grupo1-Video-pitch-v2.mp4"
+CORTINA = "fuentes/ANtarcticbreeze - Corporate Technology.mp3"  # fuera del repo (licencia sin revisar)
 SALIDA = "DIG-Grupo1-Video-pitch-v2-voz-final.mp4"
 DURACION_PITCH = 158.83  # segundos, igual al video base
 

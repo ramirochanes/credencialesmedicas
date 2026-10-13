@@ -4,7 +4,7 @@ Versión vigente: **v2 con voz**, `entregables/DIG-Grupo1-Video-pitch-v2-voz-fin
 Publicado en YouTube: https://www.youtube.com/watch?v=qY6CjE86R5Y (embebido en la portada del sitio).
 
 Se arma en dos pasos: primero se graba la imagen a partir del sitio real (video mudo
-`DIG-Grupo1-Video-pitch-v2.mp4`) y después se le mezclan la voz y la cortina.
+`entregables/fuentes/DIG-Grupo1-Video-pitch-v2.mp4`) y después se le mezclan la voz y la cortina.
 
 ## Archivos
 
@@ -29,7 +29,7 @@ Se arma en dos pasos: primero se graba la imagen a partir del sitio real (video 
 
 Desde `entregables/`: `python3 ../herramientas/video-pitch/mezclar-voz.py`
 
-Las tomas están en `entregables/Audios/` y el texto grabado en `entregables/DIG-Grupo1-Speech-voz-en-off.md`.
+Las tomas están en `entregables/Audios/`, el video mudo y la cortina en `entregables/fuentes/` (la cortina no está en el repo) y el texto grabado en `entregables/DIG-Grupo1-Speech-voz-en-off.md`.
 
 | Bloque | Toma | Entra en |
 |---|---|---|

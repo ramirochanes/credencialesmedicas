@@ -8,3 +8,5 @@ Genera `entregables/DIG-Grupo1-One-pager.pdf` (A4, una página).
 Para regenerar el PDF: abrir `one-pager.html` en Chrome → Imprimir → Guardar como PDF, tamaño A4, márgenes «Ninguno» y «Gráficos de fondo» activado. O con Playwright: `page.pdf({ format: "A4", printBackground: true, preferCSSPageSize: true })`.
 
 Los datos salen del Canvas y precio, el speech del video y el README; si cambian, actualizar acá también.
+
+`entregables-y-enlaces.html` genera `entregables/DIG-Grupo1-Entregables-y-enlaces.pdf` (índice con los enlaces al repo, el sitio, el video y el contrato), con el mismo procedimiento.
