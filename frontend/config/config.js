@@ -65,13 +65,4 @@ export const CONFIGURACION_SITIO = Object.freeze({
 
   contactoPrivacidad: "ramirochanes@hotmail.com",
 
-  // Sin nombres de los integrantes: el sitio es público. Se muestran solo las disciplinas.
-  equipo: [
-    { rol: "Contabilidad" },
-    { rol: "Desarrollo backend / frontend" },
-    { rol: "Derecho" },
-    { rol: "Economía" },
-    { rol: "Administración y seguros" },
-    { rol: "Programación" },
-  ],
 });

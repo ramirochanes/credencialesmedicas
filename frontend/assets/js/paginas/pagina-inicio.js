@@ -60,19 +60,9 @@ function prepararVerificacionDocumento() {
   });
 }
 
-function mostrarEquipo() {
-  const lista = buscarElemento("#lista-equipo");
-  lista.replaceChildren(
-    ...CONFIG.equipo.map((integrante) =>
-      crearElementoSeguro("li", {}, [crearElementoSeguro("strong", { texto: integrante.rol })]),
-    ),
-  );
-}
-
 montarEstructuraSitio("inicio");
 prepararBusqueda();
 prepararVerificacionDocumento();
-mostrarEquipo();
 
 /** Completa el apartado «Tecnología» con la red y el contrato de la configuración. */
 function completarTecnologia() {
