@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resultado de verificación — Credenciales Médicas</title>
+    <meta name="description" content="Estado vigente, emisor e historial de una credencial médica registrada en blockchain." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/img/icono.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <script type="module" src="assets/js/paginas/pagina-verificar.js"></script>
+  </head>
+  <body>
+    <noscript><p class="aviso aviso--advertencia">Este sitio necesita JavaScript para consultar la blockchain.</p></noscript>
+    <main id="contenido">
+      <div class="encabezado-pagina">
+        <span class="rotulo-seccion">Verificación pública</span>
+        <h1>Resultado de la verificación</h1>
+        <p class="texto-secundario"><a href="index.html">← Consultar otra matrícula</a></p>
+      </div>
+
+      <div id="avisos-verificacion"></div>
+      <div id="resultado-principal" aria-live="polite">
+        <div class="tarjeta"><p role="status">Consultando el registro…</p></div>
+      </div>
+      <div id="resultado-titularidad" aria-live="polite"></div>
+
+      <div id="detalle-credencial" hidden>
+        <div class="grilla-dos-columnas">
+          <div>
+            <section class="tarjeta tarjeta--acento" aria-labelledby="titulo-titularidad">
+              <span class="rotulo-seccion">¿Es realmente esta persona?</span>
+              <h2 id="titulo-titularidad">Comprobar que la matrícula es de quien la muestra</h2>
+              <div id="panel-titularidad"></div>
+            </section>
+            <section class="tarjeta" aria-labelledby="titulo-documento">
+              <span class="rotulo-seccion">¿El PDF es original?</span>
+              <h2 id="titulo-documento">Comprobar el PDF</h2>
+              <p>Si te dieron el PDF de la matrícula, subilo acá y te decimos si es exactamente el que entregó la institución o si fue modificado.</p>
+              <div id="zona-contraste"></div>
+              <div id="resultado-contraste" aria-live="polite"></div>
+            </section>
+            <section class="tarjeta" aria-labelledby="titulo-historial">
+              <span class="rotulo-seccion">Historial</span>
+              <h2 id="titulo-historial">Todo lo que pasó con esta matrícula</h2>
+              <div id="historial-credencial"></div>
+            </section>
+          </div>
+          <div>
+            <section class="tarjeta" aria-labelledby="titulo-ficha">
+              <span class="rotulo-seccion">Datos registrados</span>
+              <h2 id="titulo-ficha">Ficha</h2>
+              <div id="ficha-credencial"></div>
+            </section>
+            <section class="bloque-credencial-digital" aria-labelledby="titulo-qr">
+              <h2 id="titulo-qr" class="solo-lectores">Credencial digital</h2>
+              <div id="credencial-digital"></div>
+            </section>
+          </div>
+        </div>
+
+        <section class="tarjeta" aria-labelledby="titulo-antecedentes">
+          <span class="rotulo-seccion">Cargado por el médico</span>
+          <h2 id="titulo-antecedentes">Cursos y formación que declaró el propio médico</h2>
+          <p class="texto-chico texto-secundario">Esto no lo certifica la institución: lo agregó el médico.</p>
+          <div id="antecedentes-credencial"></div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

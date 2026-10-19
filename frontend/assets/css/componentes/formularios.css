@@ -1,0 +1,138 @@
+/* Formularios: etiqueta arriba, ayuda y error en línea */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  margin-bottom: var(--espacio-4);
+}
+.campo label,
+.campo .etiqueta {
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 600;
+  color: var(--color-texto);
+}
+.campo .obligatorio {
+  color: var(--estado-revocada);
+}
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="date"],
+.campo input[type="search"],
+.campo select,
+.campo textarea {
+  min-height: 44px;
+  width: 100%;
+  padding: var(--espacio-2) var(--espacio-3);
+  border: 1px solid var(--color-borde-fuerte);
+  border-radius: var(--radio-chico);
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  font: inherit;
+  font-size: 1rem; /* evita zoom en iOS */
+}
+.campo textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--color-turquesa);
+}
+.campo [aria-invalid="true"] {
+  border-color: var(--color-error);
+  background: var(--color-error-fondo);
+}
+.campo input[type="file"] {
+  font: inherit;
+  font-size: var(--tamano-chico);
+  min-height: 44px;
+}
+.ayuda-campo {
+  font-size: var(--tamano-minimo);
+  color: var(--color-texto-secundario);
+}
+.error-campo {
+  font-size: var(--tamano-minimo);
+  color: var(--color-error);
+  font-weight: 600;
+}
+.contador-caracteres {
+  font-size: var(--tamano-minimo);
+  color: var(--color-texto-secundario);
+  align-self: flex-end;
+}
+
+/* Búsqueda destacada (inicio y verificador) */
+.busqueda-credencial {
+  display: flex;
+  gap: var(--espacio-2);
+}
+.busqueda-credencial input {
+  flex: 1;
+  min-height: 52px;
+  padding: 0 var(--espacio-4);
+  border: 1px solid var(--color-borde-fuerte);
+  border-radius: var(--radio-chico);
+  font: inherit;
+  font-size: 1rem;
+}
+.busqueda-credencial .boton {
+  min-height: 52px;
+}
+
+/* Zona para soltar o elegir un documento (se procesa en el navegador) */
+.selector-documento {
+  position: relative;
+  border: 2px dashed var(--color-borde-fuerte);
+  border-radius: var(--radio);
+  background: var(--color-panel);
+  padding: var(--espacio-5);
+  text-align: center;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.selector-documento.arrastrando {
+  border-color: var(--color-turquesa);
+  background: var(--color-turquesa-suave);
+}
+.selector-documento input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.selector-documento__titulo {
+  font-weight: 600;
+  color: var(--color-azul-institucional);
+}
+.selector-documento__resultado {
+  margin-top: var(--espacio-3);
+  font-size: var(--tamano-chico);
+  text-align: left;
+}
+
+fieldset.grupo-campos {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: var(--espacio-4);
+  margin: 0 0 var(--espacio-4);
+}
+fieldset.grupo-campos legend {
+  font-weight: 700;
+  color: var(--color-azul-institucional);
+  padding: 0 var(--espacio-2);
+}
+
+@media (max-width: 560px) {
+  .busqueda-credencial {
+    flex-direction: column;
+  }
+}
+
+/* Casillas de verificación con tamaño táctil razonable */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-turquesa);
+  flex-shrink: 0;
+}

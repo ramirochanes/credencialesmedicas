@@ -1,0 +1,11 @@
+{
+  "_descripcion": "Semilla ESTRUCTURAL del padrón de demostración. Instituciones ficticias. tipo: 1 Universidad, 2 Colegio profesional, 3 Ministerio de salud, 4 Prestador de salud. tiposCredencial es una máscara: 2 Título, 4 Credencial colegial, 8 Matrícula sanitaria, 16 Certificado de especialidad.",
+  "institucionDelDesplegador": "colegio-demo-a",
+  "instituciones": [
+    { "clave": "universidad-demo", "nombre": "Universidad Demo (DIG UTN)", "tipo": 1, "jurisdiccion": "Jurisdicción Demo A", "tiposCredencial": 2 },
+    { "clave": "colegio-demo-a", "nombre": "Colegio Médico Demo A", "tipo": 2, "jurisdiccion": "Jurisdicción Demo A", "tiposCredencial": 20 },
+    { "clave": "colegio-demo-b", "nombre": "Colegio Médico Demo B", "tipo": 2, "jurisdiccion": "Jurisdicción Demo B", "tiposCredencial": 4 },
+    { "clave": "ministerio-demo", "nombre": "Ministerio de Salud Demo", "tipo": 3, "jurisdiccion": "Jurisdicción Demo A", "tiposCredencial": 8 },
+    { "clave": "hospital-demo", "nombre": "Hospital Demo", "tipo": 4, "jurisdiccion": "Jurisdicción Demo A", "tiposCredencial": 0 }
+  ]
+}

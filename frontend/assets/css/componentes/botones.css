@@ -1,0 +1,106 @@
+/* Botones: primario (acción principal), secundario, peligro (irreversible), enlace */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  min-height: 44px;
+  padding: 0 var(--espacio-5);
+  border-radius: var(--radio-chico);
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.boton:disabled,
+.boton[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.boton--primario {
+  background: var(--color-azul-institucional);
+  color: var(--color-blanco);
+}
+.boton--primario:hover:not(:disabled) {
+  background: var(--color-azul-profundo);
+  color: var(--color-blanco);
+}
+
+.boton--turquesa {
+  background: var(--color-turquesa);
+  color: var(--color-blanco);
+}
+.boton--turquesa:hover:not(:disabled) {
+  background: #0b6470;
+  color: var(--color-blanco);
+}
+
+.boton--secundario {
+  background: var(--color-blanco);
+  color: var(--color-azul-institucional);
+  border-color: var(--color-borde-fuerte);
+}
+.boton--secundario:hover:not(:disabled) {
+  background: var(--color-panel);
+}
+
+.boton--peligro {
+  background: var(--color-blanco);
+  color: var(--estado-revocada);
+  border-color: var(--estado-revocada);
+}
+.boton--peligro:hover:not(:disabled) {
+  background: var(--estado-revocada-fondo);
+}
+
+.boton--claro {
+  background: var(--color-blanco);
+  color: var(--color-azul-institucional);
+}
+
+.boton--ancho {
+  width: 100%;
+}
+
+button.enlace {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--color-turquesa);
+}
+
+/* Área táctil de 44 px sin cambiar el alto de la línea (el margen negativo compensa el padding) */
+button.boton-copiar {
+  display: inline-block;
+  padding: 12px 8px;
+  margin: -12px -8px;
+}
+
+.grupo-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-4);
+}
+
+/* Indicador de operación en curso dentro del botón */
+.boton[aria-busy="true"]::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<title>DIG Grupo 1 — One pager — Credenciales Médicas</title>
+<style>
+  @page { size: A4; margin: 0; }
+  @font-face { font-family: "Source Sans 3"; src: url(../../frontend/assets/fuentes/source-sans-3-latin-400-normal.woff2); font-weight: 400; }
+  @font-face { font-family: "Source Sans 3"; src: url(../../frontend/assets/fuentes/source-sans-3-latin-600-normal.woff2); font-weight: 600; }
+  @font-face { font-family: "Source Sans 3"; src: url(../../frontend/assets/fuentes/source-sans-3-latin-700-normal.woff2); font-weight: 700; }
+  @font-face { font-family: "Lora"; src: url(../../frontend/assets/fuentes/lora-latin-700-normal.woff2); font-weight: 700; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { width: 210mm; height: 297mm; overflow: hidden; font-family: "Source Sans 3", Arial, sans-serif; font-size: 9.2pt; line-height: 1.38; color: #18212f; background: #ffffff; }
+  h1, h2, .cifra b { font-family: "Lora", Georgia, serif; font-weight: 700; }
+  p { margin: 0; }
+  .cabecera { background: #12263f; color: #f4f6f9; padding: 9mm 12mm 8mm; display: flex; justify-content: space-between; align-items: center; gap: 8mm; border-left: 3mm solid #0f7c8a; }
+  .rotulo { font-size: 7.6pt; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #8fd3db; margin-bottom: 2mm; }
+  h1 { font-size: 26pt; line-height: 1.05; margin: 0 0 2mm; }
+  .bajada { font-size: 11pt; color: #c7d3e2; max-width: 120mm; }
+  .qr { background: #ffffff; padding: 2.5mm; border-radius: 2mm; text-align: center; color: #12263f; font-size: 7.4pt; font-weight: 600; }
+  .qr img { display: block; width: 24mm; height: 24mm; margin: 0 auto 1mm; }
+  main { padding: 6mm 12mm 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4.5mm 6mm; }
+  .bloque h2 { font-size: 11.5pt; color: #1b365d; margin: 0 0 1.6mm; padding-bottom: 1mm; border-bottom: 2px solid #0f7c8a; }
+  .ancho { grid-column: 1 / -1; }
+  ul { margin: 0; padding-left: 4mm; }
+  li { margin-bottom: .8mm; }
+  .cifras { display: flex; gap: 3mm; margin-top: 2mm; }
+  .cifra { flex: 1; background: #f4f8fa; border-top: 3px solid #0f7c8a; border-radius: 1.5mm; padding: 2mm 2.4mm; font-size: 8.2pt; color: #3b4656; }
+  .cifra b { display: block; font-size: 15pt; line-height: 1.1; color: #1b365d; }
+  .cifra.alerta { border-top-color: #b3261e; }
+  .cifra.alerta b { color: #b3261e; }
+  .flujo { display: flex; align-items: center; gap: 2mm; margin: 1.5mm 0 2mm; }
+  .caja { flex: 1; border: 1.5px solid #d6dee8; border-radius: 1.5mm; padding: 1.8mm 2mm; font-size: 8.2pt; color: #3b4656; background: #ffffff; }
+  .caja b { display: block; color: #1b365d; font-size: 8.8pt; }
+  .caja.centro { border-color: #0f7c8a; background: #e3f2f3; }
+  .flecha { color: #0f7c8a; font-weight: 700; font-size: 11pt; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.4pt; }
+  th, td { text-align: left; padding: 1.2mm 1.6mm; border-bottom: 1px solid #e3e8ef; vertical-align: top; }
+  th { background: #eef3f8; color: #1b365d; font-weight: 700; }
+  .nota { font-size: 8pt; color: #556274; margin-top: 1.4mm; }
+  .destacado { background: #e3f2f3; border-left: 3px solid #0f7c8a; padding: 1.8mm 2.6mm; margin-top: 2mm; font-size: 8.6pt; }
+  .equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4mm 3mm; font-size: 8.4pt; }
+  .equipo b { display: block; color: #1b365d; }
+  .equipo span { color: #556274; }
+  .pie { position: absolute; left: 0; right: 0; bottom: 0; background: #12263f; color: #c7d3e2; padding: 4mm 12mm; font-size: 8pt; display: flex; justify-content: space-between; gap: 6mm; }
+  .pie b { color: #8fd3db; font-weight: 600; }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: 7.6pt; }
+</style>
+</head>
+<body>
+<header class="cabecera">
+  <div>
+    <p class="rotulo">DIG · Grupo 1 · Diplomatura en Blockchain y Finanzas Digitales · UTN 2026</p>
+    <h1>Credenciales Médicas</h1>
+    <p class="bajada">Matrículas médicas que se comprueban en segundos. Una capa de confianza en blockchain sobre los registros que ya existen.</p>
+  </div>
+  <div class="qr"><img src="qr-sitio.svg" alt="Código QR del sitio">dasder.com/utn-dig</div>
+</header>
+
+<main>
+  <section class="bloque">
+    <h2>El problema</h2>
+    <p>Durante ocho meses, en el Chaco, una mujer atendió en dos hospitales públicos con la matrícula de otro médico y firmó nueve certificados de defunción. Hoy verificar una matrícula es llamar, mandar un mail o confiar en un sello. Y los sellos se falsifican.</p>
+    <div class="cifras">
+      <div class="cifra"><b>244.588</b>médicos matriculados</div>
+      <div class="cifra"><b>24</b>jurisdicciones, cada una con su registro</div>
+      <div class="cifra alerta"><b>9</b>certificados firmados con una matrícula ajena</div>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <h2>La solución</h2>
+    <ul>
+      <li>El colegio otorga la matrícula desde su panel, como hoy; en la blockchain queda la <b>huella del documento</b>, con fecha e institución.</li>
+      <li><b>Cualquiera la consulta gratis</b>, desde el celular y sin registrarse: vigente, quién la otorgó y todo su historial.</li>
+      <li>Si alguien <b>adultera el PDF</b>, aunque sea en un detalle, el sistema lo detecta.</li>
+      <li>Una <b>suspensión o baja</b> se ve al instante en todo el país, con quién la hizo y cuándo.</li>
+      <li>El hospital que verifica antes de contratar <b>deja constancia</b>.</li>
+    </ul>
+  </section>
+
+  <section class="bloque ancho">
+    <h2>Cómo funciona</h2>
+    <div class="flujo">
+      <div class="caja"><b>Colegio</b>Revisa los papeles, otorga, suspende o da de baja. El PDF original queda en su sistema.</div>
+      <span class="flecha">→</span>
+      <div class="caja centro"><b>Contrato en la red principal de Polygon</b>Guarda la huella SHA-256, las fechas, el estado y quién hizo cada cambio. Nadie lo puede modificar.</div>
+      <span class="flecha">←</span>
+      <div class="caja"><b>Quien verifica</b>Hospital, aseguradora o paciente: escanea el QR o sube el PDF, gratis.</div>
+    </div>
+    <p class="nota"><b>Privacidad por diseño (Ley 25.326):</b> ningún dato personal queda en la blockchain. Ni nombre, ni DNI, ni información clínica; solo la huella del documento y su estado.</p>
+  </section>
+
+  <section class="bloque">
+    <h2>Modelo de negocio: paga quien verifica</h2>
+    <table>
+      <tr><th>Segmento</th><th>Precio (hipótesis)</th></tr>
+      <tr><td>Clínicas y hospitales</td><td>USD 50/mes, hasta 200 constancias y alertas</td></tr>
+      <tr><td>Aseguradoras y ART</td><td>USD 0,10 por consulta, mínimo USD 300/mes</td></tr>
+      <tr><td>Colegios médicos</td><td>Piloto sin cargo; después USD 0,50 por matriculado y año</td></tr>
+      <tr><td>Profesionales y pacientes</td><td>Gratis</td></tr>
+    </table>
+    <p class="nota">Precio de entrada: USD 0,25 por constancia, entre nuestro costo (≤ USD 0,014) y lo que hoy cuesta verificar (USD 100–200 por profesional, referencias de EE.UU.). A validar con entrevistas.</p>
+  </section>
+
+  <section class="bloque">
+    <h2>Números</h2>
+    <div class="cifras" style="margin-top:0">
+      <div class="cifra"><b>&lt; USD 0,08</b>de gas por matrícula otorgada, con la red en pico</div>
+      <div class="cifra"><b>6× · 5×</b>LTV/CAC de una clínica y de un colegio</div>
+    </div>
+    <div class="destacado"><b>Hoy:</b> MVP funcionando en la red principal de Polygon, contrato verificado en Sourcify (<code>0x374adD49…A98565</code>), 49 tests, sitio público y prueba de titularidad firmada por el médico.<br><b>Próximo paso:</b> piloto con un colegio y diez prestadores, con gas patrocinado y gobernanza en multisig.</div>
+  </section>
+
+  <section class="bloque ancho">
+    <h2>Equipo</h2>
+    <div class="equipo">
+      <div><b>Contabilidad</b></div>
+      <div><b>Derecho</b></div>
+      <div><b>Economía</b></div>
+      <div><b>Administración y seguros</b></div>
+      <div><b>Desarrollo de software</b></div>
+      <div><b>Programación</b></div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div><b>Sitio:</b> dasder.com/utn-dig · <b>Video:</b> youtube.com/watch?v=qY6CjE86R5Y · <b>Código:</b> github.com/ramirochanes/credencialesmedicas</div>
+  <div>Prototipo académico con datos de demostración</div>
+</footer>
+</body>
+</html>

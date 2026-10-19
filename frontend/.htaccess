@@ -1,0 +1,23 @@
+# Cabeceras de seguridad (se aplican solo si el hosting permite .htaccess con mod_headers).
+# Si cambiás los nodos RPC en config/config.js, actualizá también connect-src.
+# auth.privy.io y su RPC son para el ingreso con mail (config.accesoConMail).
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://polygon-bor-rpc.publicnode.com https://polygon.drpc.org https://auth.privy.io https://polygon-mainnet.rpc.privy.systems; frame-src https://auth.privy.io https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+<IfModule mod_mime.c>
+  AddType text/javascript .js
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Que los navegadores vuelvan a preguntar por HTML, CSS y JS en cada visita (si no cambió,
+# el servidor responde 304 y no se descarga de nuevo). Evita ver versiones viejas después
+# de actualizar el sitio (el hosting cachea 7 días por defecto). Resuelve DT-5.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
